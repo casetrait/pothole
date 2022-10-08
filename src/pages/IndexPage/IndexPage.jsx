@@ -1,7 +1,9 @@
 import './IndexPage.css'
 import { Component } from 'react'
-import { Link } from 'react-router-dom'
-import Logo from '../../components/Logo/Logo'
+import NavBar from '../../components/NavBar/NavBar'
+import Search from '../../components/Search/Search'
+import Map from '../../components/Map/Map'
+import TicketList from '../../components/TicketList/TicketList'
 
 //Needs to be refactored into hooks
 export default class IndexPage extends Component {
@@ -9,20 +11,16 @@ export default class IndexPage extends Component {
 
     }
 
-    async componentDidMount() {
-
-    }
 
     render() {
         return(
-            <main className="OrderHistoryPage">
-                <nav>
-                    Nav Items Here:
-                    <Link to="/home" className=""><Logo /></Link>
-                    <Link to="/tickets" className="">All Tickets</Link>
-                    <Link to="/new" className="">Open A Ticket</Link>
-                </nav>
-          </main>
+            <main className="">
+                    <NavBar />
+                    <h1>Index Page</h1>
+                    <Search />
+                    <Map />
+                    <TicketList />
+            </main>
         )
     }
 }
