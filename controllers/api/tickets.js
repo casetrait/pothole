@@ -1,13 +1,12 @@
-const Ticket = require("../models/ticket");
+const Ticket = require("../../models/ticket");
 
 module.exports = { create };
 
-// function create(req, res) {
-//   Ticket.create(req.body, function (err, post) {
-//     res.status(200).json("ok");
-//   });
-// }
-
 async function create(req, res) {
-  await Ticket.create(req.body).then(res.status(200).json("ok"));
+  try {
+    await Ticket.create({ ...req.body, user: req.user._id });
+    res.status(200).json("Added to DB succesfully!");
+  } catch (err) {
+    res.status(500).json(err);
+  }
 }
