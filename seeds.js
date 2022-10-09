@@ -9,7 +9,7 @@ const Ticket = require('./models/Ticket');
   await Ticket.deleteMany({});
   const tickets = await Ticket.create([
     {
-        reporter: ['6341ca2bc688364cb6cb7a66'], 
+        reporter: '6341ca2bc688364cb6cb7a66', 
         title: 'Pothole on Isabel St',
         category: 'Pothole', 
         description:'Big hole near the stop sign', 
@@ -19,7 +19,7 @@ const Ticket = require('./models/Ticket');
         resolvedVote: ['6341ca2bc688364cb6cb7a66'],
    },
    {
-        reporter: ['6341ca2bc688364cb6cb7a66'], 
+        reporter: '6341ca2bc688364cb6cb7a66', 
         title: 'Need a Crosswalk',
         category: 'Pedestrian', 
         description:'Nowhere to cross to the mall for 3 blocks!', 
@@ -29,7 +29,7 @@ const Ticket = require('./models/Ticket');
         resolvedVote: ['6341ca2bc688364cb6cb7a66'],
     },
     {
-        reporter: ['6341ca2bc688364cb6cb7a66'],
+        reporter: '6341ca2bc688364cb6cb7a66',
         title: 'Single lane due to snow', 
         category: 'Snow', 
         description:'Right lane non-existant; too much snow', 
