@@ -1,6 +1,6 @@
 import Map from "../Map/Map";
 import ImageUpload from "../ImageUpload/ImageUpload";
-import React, { useState } from 'react'
+import React, { useState } from 'react' // think you can delete "React"
 import { format } from "morgan";
 
 
