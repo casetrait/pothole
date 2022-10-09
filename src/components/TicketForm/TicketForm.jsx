@@ -34,17 +34,18 @@ export default function TicketForm(props) {
         
     let handleSubmit = async ()=>{
         let body = {...form,lat:statePosition[0],long:statePosition[1]}
+        let jwt = localStorage.getItem('token')
         let options = {
             method: "POST",
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",'Authorization': 'Bearer ' + jwt
             },
             body: JSON.stringify(body)
         }
-        await fetch("/api",options)
+        await fetch("/api/tickets",options)
         .then(res=>res.json())
-        .then(data =>form.setForm({title: '',category:'',description:'',lat:'',long:''}))
-        console.log(body)
+        .then(data =>setForm({title: '',category:'',description:'',lat:'',long:''}))
+        
     }
     
         
