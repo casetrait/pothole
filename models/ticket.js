@@ -33,6 +33,7 @@ const ticketSchema = new Schema(
     confirmationVote: [],
     resolvedVote: [],
     images: [imageSchema],
+    user: { type: Schema.Types.ObjectId, ref: "User" },
   },
   {
     timestamps: true,
