@@ -1,6 +1,6 @@
 import Map from "../Map/Map";
 import ImageUpload from "../ImageUpload/ImageUpload";
-import { useState } from 'react' // think you can delete "React"
+import { useState } from 'react' 
 import {getCurrentLatLng} from '../../utilities/Getloc'
 
 
@@ -9,6 +9,7 @@ import {getCurrentLatLng} from '../../utilities/Getloc'
 export default function TicketForm(props) {    
     
     const [statePosition,setPosition]=useState([49.895077,-97.138451])
+    
     console.log(statePosition)
         
     const[form,setForm]=useState({title: '',category:'',description:'',lat:'',long:''})
