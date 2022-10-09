@@ -1,7 +1,6 @@
 import Map from "../Map/Map";
 import ImageUpload from "../ImageUpload/ImageUpload";
-import React, { useState,useEffect } from 'react'
-import { format } from "morgan";
+import { useState } from 'react' // think you can delete "React"
 import {getCurrentLatLng} from '../../utilities/Getloc'
 
 
