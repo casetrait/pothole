@@ -5,8 +5,8 @@ export default function TicketItems(props) {
     return (
         <div className="">
             <p>{props.title}</p>
-            <TicketHeader />
-            <TicketDetails />
+            {/* <TicketHeader />
+            <TicketDetails /> */}
         </div>
     );
 }

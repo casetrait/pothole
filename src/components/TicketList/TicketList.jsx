@@ -14,6 +14,7 @@ export default function TicketList({ticketItems}) {
     return (
         <div className="">
             <h2>All Tickets</h2>
+            {tickets}
         </div>
     );
 }
