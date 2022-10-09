@@ -1,22 +1,34 @@
-import React from 'react'
-import { useMapEvents} from 'react-leaflet/hooks'
-import L from "leaflet";
+import { useMapEvent} from 'react-leaflet/hooks'
 
-export default function Mapfunc({setPosition}) {
-    let marker
-    const map = useMapEvents({click: (e)=>{
-      if(marker){
-          let position=[]
-        //   setPosition(prevposition=>position)   
-          map.removeLayer(marker)
-        position=[e.latlng.lat,e.latlng.lng]
-        // console.log(position)
-        marker=L.marker(position,{draggable:true}).addTo(map)
-        // setPosition(prevposition=>position)        
-      }else{
-        const position=[e.latlng.lat,e.latlng.lng]
-        marker=L.marker(position,{draggable:true}).addTo(map)
-        // setPosition(prevposition=> position)  
-    }
-    }})
+
+export default function Mapfunc({setPosition,statePosition}) {
+   
+       
+    const map = useMapEvent('click', (e)=>{
+        setPosition([e.latlng.lat,e.latlng.lng])
+    })
+
+
+    // const map = useMapEvent('click', (e)=>{
+  
+        
+
+    //     if(!marker){
+    //         marker=L.marker([e.latlng.lat,e.latlng.lng]).addTo(map)
+    //         position=[e.latlng.lat,e.latlng.lng]
+    //         // setPosition(position)
+    //         console.log(position , 'if')
+            
+    //     }
+    //     else{
+    //         map.removeLayer(marker)
+    //         marker=L.marker([e.latlng.lat,e.latlng.lng]).addTo(map)
+    //         position=[e.latlng.lat,e.latlng.lng]
+    //         // setPosition(position)
+    //         console.log(position, 'else')          
+            
+    //     }
+        
+    //     setPosition(position)
+    // })
 }
