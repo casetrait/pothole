@@ -12,7 +12,7 @@ const imageSchema = new Schema(
 
 const ticketSchema = new Schema(
   {
-    reporter: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    reporter: { type: Schema.Types.ObjectId, ref: "User" },
     title: String,
     category: {
       type: String,
@@ -30,8 +30,8 @@ const ticketSchema = new Schema(
     description: String,
     lat: Number,
     long: Number,
-    confirmationVote: [mongoose.Schema.Types.ObjectId],
-    resolvedVote: [mongoose.Schema.Types.ObjectId],
+    confirmationVote: [],
+    resolvedVote: [],
     images: [imageSchema],
   },
   {

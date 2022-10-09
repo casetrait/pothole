@@ -1,8 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const ticketCtrl = require("../../controllers/api/ticket");
+const ticketsCtrl = require("../../controllers/api/tickets");
 
 //Post new ticket
-router.post("/", ticketCtrl.create);
+router.post("/", ticketsCtrl.create);
 
 //Get all tickets
+router.get("/", ticketsCtrl.index)
+
+module.exports = router

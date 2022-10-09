@@ -1,7 +1,12 @@
+import TicketHeader from "../TicketHeader/TicketHeader";
+import TicketDetails from "../TicketDetails/TicketDetails";
+
 export default function TicketItems(props) {
     return (
         <div className="">
-            <h1>TicketItem</h1>
+            <p>{props.title}</p>
+            <TicketHeader />
+            <TicketDetails />
         </div>
     );
 }

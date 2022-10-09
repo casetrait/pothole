@@ -1,5 +1,6 @@
 import './IndexPage.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import * as ticketsAPI from '../../utilities/tickets-api';
 import NavBar from '../../components/NavBar/NavBar'
 import Search from '../../components/Search/Search'
 import Map from '../../components/Map/Map'
@@ -8,15 +9,23 @@ import TicketList from '../../components/TicketList/TicketList'
 //Needs to be refactored into hooks
 export default function IndexPage(props) {
     const [statePosition,setPosition]=useState([49.895077,-97.138451])
+    const [ticketItems, setTicketItems]=useState([]);
 
+    useEffect( function () {
+        //load ticketItems 
+        async function fetchTicketItems() {
+            const tickets = await ticketsAPI.getAll()
+            setTicketItems(tickets)
+        }
+        fetchTicketItems()
+    })
 
     return(
         <main className="">
                 <NavBar />
-                <h1>Index Page</h1>
+                {/* <Map setPosition = {setPosition} statePosition={statePosition}/> */}
                 <Search />
-                <Map setPosition = {setPosition} statePosition={statePosition}/>
-                <TicketList />
+                <TicketList ticketItems={ticketItems}/>
         </main>
     )
     
