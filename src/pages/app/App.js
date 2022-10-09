@@ -1,49 +1,48 @@
-import { Component } from "react"
-import "./App.css"
-import { Route, Routes, Navigate } from 'react-router-dom'
-import IndexPage from "../IndexPage/IndexPage"
-import FormPage from "../FormPage/FormPage"
-import HomePage from "../HomePage/HomePage"
-import AuthPage from "../AuthPage/AuthPage"
+import { Component } from "react";
+import "./App.css";
+import { Route, Routes, Navigate } from "react-router-dom";
+import IndexPage from "../IndexPage/IndexPage";
+import FormPage from "../FormPage/FormPage";
+import HomePage from "../HomePage/HomePage";
+import AuthPage from "../AuthPage/AuthPage";
 
 export default class App extends Component {
-
   state = {
-    user:null
-  }
+    user: null,
+  };
 
   componentDidMount() {
-    let token = localStorage.getItem('token')
+    let token = localStorage.getItem("token");
     if (token) {
-      const payload = JSON.parse(atob(token.split('.')[1])); 
-      if (payload.exp < Date.now() / 1000) {  
-        localStorage.removeItem('token');
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      if (payload.exp < Date.now() / 1000) {
+        localStorage.removeItem("token");
         token = null;
-      } else { 
-        let userDoc = payload.user 
-        this.setState({user: userDoc})      
+      } else {
+        let userDoc = payload.user;
+        this.setState({ user: userDoc });
       }
     }
-  }  
-
-  setUserInState = (incomingUserData) => {
-    this.setState({ user: incomingUserData })
   }
 
+  setUserInState = (incomingUserData) => {
+    this.setState({ user: incomingUserData });
+  };
+
   render() {
-    return(
+    return (
       <main className="App">
-        {this.state.user ? 
+        {this.state.user ? (
           <Routes>
-            <Route path='/home' element={<HomePage />}/>
-            <Route path='/tickets' element={<IndexPage />}/>
-            <Route path='/new' element={<FormPage />}/>
-            <Route path="*" element={<Navigate to="/home" replace />}/>
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/tickets" element={<IndexPage />} />
+            <Route path="/new" element={<FormPage />} />
+            <Route path="*" element={<Navigate to="/home" replace />} />
           </Routes>
-        :
-          <AuthPage setUserInState={this.setUserInState}/>
-      }
+        ) : (
+          <AuthPage setUserInState={this.setUserInState} />
+        )}
       </main>
-    ) 
+    );
   }
 }

@@ -3,19 +3,16 @@ import { Component } from 'react'
 import NavBar from '../../components/NavBar/NavBar'
 import TicketForm from '../../components/TicketForm/TicketForm'
 
-//Needs to be refactored into hooks
-export default class FormPage extends Component {
-    state = {
 
-    }
+import React from 'react'
+
+export default function FormPage(props) {
 
 
-    render() {
         return(
             <main className="">
                     <NavBar />
-                    <TicketForm />
+                    <TicketForm user={props.user}/>
             </main>
         )
     }
-}
