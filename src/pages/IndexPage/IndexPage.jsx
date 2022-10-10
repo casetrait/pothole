@@ -10,16 +10,19 @@ import TicketList from '../../components/TicketList/TicketList'
 export default function IndexPage(props) {
     const [statePosition,setPosition]=useState([49.895077,-97.138451])
     const [ticketItems, setTicketItems]=useState([]);
-
-    useEffect( function () {
+    
+    
+    let fetchTicketItems=async ()=> {
+        const tickets = await ticketsAPI.getAll()
+        setTicketItems(tickets)
+    }
+    
+    useEffect( ()=> {
         //load ticketItems 
-        async function fetchTicketItems() {
-            const tickets = await ticketsAPI.getAll()
-            setTicketItems(tickets)
-        }
         fetchTicketItems()
-    })
-
+    },[]
+    )
+    console.log(ticketItems)
     return(
         <main className="">
                 <NavBar />
