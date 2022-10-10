@@ -72,7 +72,7 @@ export default function TicketForm({ticketItems}) {
            
             <Map setPosition = {setPosition} formCheck={formCheck} statePosition={statePosition} ticketItems={ticketItems}/>
             
-            <ImageUpload />
+            <ImageUpload>Upload Image</ImageUpload>
             <button onClick={handleSubmit}>Submit</button>
         </div>
     );

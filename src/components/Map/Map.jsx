@@ -14,7 +14,8 @@ export default  function Map({setPosition,statePosition,ticketItems,formCheck}) 
     <MapContainer
         center={statePosition}
         zoom={13}
-        scrollWheelZoom={true}>
+        scrollWheelZoom={true}
+        >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
