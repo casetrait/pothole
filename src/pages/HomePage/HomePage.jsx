@@ -1,21 +1,32 @@
 import './HomePage.css'
-import { Component } from 'react'
 import NavBar from '../../components/NavBar/NavBar'
 
-//Needs to be refactored into hooks
-export default class FormPage extends Component {
-    state = {
-
-    }
-
-
-    render() {
-        return(
-            <main className="">
-                    <NavBar />
-                    <h1>Home Page</h1>
-                    <img src='/images/CircleLogo.png' width='400px' alt ='Logo'/>
-            </main>
-        )
-    }
+export default function HomePage() {
+    return(
+        <main className="">
+            <NavBar />
+            <h1>About Route Ticket</h1>
+            <p className="home-text">
+                Route Ticket was developed to connect infrustructure planners with their citizens to 
+                provide improved and inexpensive data for roadway and infrastructure planning. 
+            </p>
+            <p className="home-text">
+                Users can create an account and report issues along their route by opening 
+                a "Route Ticket". Whether it be potholes, snow obstructions, poor signage or other concerns,
+                Users can report a unique issue by selection "Open a Ticket" and providing details including 
+                map position and an optional image.
+            </p>
+            <p className="home-text">
+                If the issue of concern already has an active ticket it will appear on the map. A user can 
+                cast a confirmation vote on the ticket to indicate extra urgency to resolve the issue.  Similarily, 
+                users can vote on tickets that are resolved to assist with a status and filtering algorithm. 
+            </p>
+            <img className="home-logo" src='/images/CircleLogo.png' alt ='Logo'/>
+            <h1>Development</h1>
+            <p className="home-text">
+                Route Ticket is currently undergoing testing and further development to add additional functionality. 
+                Please test the website and report any issues or suggestions to casetrait@gmail.com or randolph@randolph.com
+            </p>
+        </main>
+    )
 }

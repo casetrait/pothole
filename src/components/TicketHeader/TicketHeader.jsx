@@ -22,8 +22,8 @@ export default function TicketHeader(props) {
         <div className="ticket-header">
             <h2>Title: {props.ticket.title}</h2> 
             <h3>Category: {props.ticket.category}</h3>
-            <p>Confirmation Votes: {conVote}</p>
-            <p>Resolved Votes: {resVote}</p>
+            <h3>Confirmation Votes: {conVote}</h3>
+            <h3>Resolved Votes: {resVote}</h3>
         </div>
     );
 }

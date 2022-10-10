@@ -6,9 +6,9 @@ import './NavBar.css'
 export default function NavBar(props) {
     return (
         <nav className="">
-                    <Link to="/home" className=""><Logo /></Link>
-                    <Link to="/tickets" className="">All Tickets</Link>
-                    <Link to="/new" className="">Open A Ticket</Link>
+            <Link to="/home" className="menu-logo"><Logo /></Link>
+            <Link to="/tickets" className="menu">All Tickets</Link>
+            <Link to="/new" className="menu">Open A Ticket</Link>
         </nav>
     );
 }

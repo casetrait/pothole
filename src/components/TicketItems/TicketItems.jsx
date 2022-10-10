@@ -3,8 +3,6 @@ import TicketHeader from "../TicketHeader/TicketHeader";
 import TicketDetails from "../TicketDetails/TicketDetails";
 import '../TicketList/TicketList.css'
 
-
-
 export default function TicketItems(props) {
 
     const[show, setShow] = useState(false)
@@ -13,8 +11,10 @@ export default function TicketItems(props) {
 
     return (
         <div className="">
-            <button onClick={handleDetail} className="header-button"><TicketHeader {...props}/></button>
-            {show && <TicketDetails {...props}/>}
+            <button onClick={handleDetail} className="header-button">
+                <TicketHeader {...props} key = {props.ticket._id}/>
+            </button>
+            { show && <TicketDetails {...props} key = {props.ticket._id}/> }
         </div>
     );
 }

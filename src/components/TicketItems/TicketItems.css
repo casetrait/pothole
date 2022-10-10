@@ -5,12 +5,20 @@
 }
 
 .header-button {
-    width:100%
+    width:100%;
+    background-color:#323232;
+    color: antiquewhite;
+    border-radius: 10px 10px 0 0;
+    border: 4px solid black;
+    border-bottom: none;
 }
 
 .ticket-details {
-    border: 1px solid black;
+    border: 4px solid black;
+    border-radius: 0 0 10px 10px;
+    border-top: none;
     display: flex;
     justify-content:space-between;
     padding: 0 20px;
+    background-color: rgb(66, 64, 64)
 }

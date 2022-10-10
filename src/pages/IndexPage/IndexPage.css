@@ -1,0 +1,14 @@
+.index-map-search {
+    display: flex;
+}
+
+.index-map {
+    width: 20%;
+}
+
+.ticklist-header {
+    text-align: left;
+    padding: 20px;
+    background-color: Black;
+    margin: 0;
+}
