@@ -26,7 +26,7 @@ export default function IndexPage(props) {
     return(
         <main className="">
                 <NavBar />
-                <Map setPosition = {setPosition} statePosition={statePosition}/>
+                <Map setPosition = {setPosition} statePosition={statePosition} ticketItems={ticketItems}/>
                 <Search />
                 <TicketList ticketItems={ticketItems}/>
         </main>
