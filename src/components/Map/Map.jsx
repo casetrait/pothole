@@ -5,8 +5,10 @@ import {iconSelect} from '../../utilities/iconSelector'
 
 
 
+
 export default  function Map({setPosition,statePosition,ticketItems,formCheck}) {
-  
+
+
     return (
         
     <MapContainer
@@ -16,11 +18,8 @@ export default  function Map({setPosition,statePosition,ticketItems,formCheck}) 
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />     
-        {formCheck? <Getclick setPosition={setPosition} statePosition={statePosition}/>: null}
-               
-        {formCheck? <Marker position={statePosition} ></Marker>: null}
-        
+        />
+       
         {ticketItems.map(ticket=>
         <Marker key = {ticket._id} position={[ticket.lat, ticket.long]} icon = {iconSelect(ticket.category)}>
           <Popup>
@@ -28,6 +27,12 @@ export default  function Map({setPosition,statePosition,ticketItems,formCheck}) 
             {ticket.title}
           </Popup>
           </Marker>)}
+        
+        {/* Make Sure get click and selection marker only works on form page*/}
+        {formCheck? <Getclick setPosition={setPosition} statePosition={statePosition}/>: null}
+               
+        {formCheck? <Marker position={statePosition} ></Marker>: null}
+
           
         </MapContainer>
 
