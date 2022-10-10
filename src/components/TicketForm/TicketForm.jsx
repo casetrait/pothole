@@ -6,7 +6,7 @@ import {getCurrentLatLng} from '../../utilities/Getloc'
 
 
 
-export default function TicketForm(props) {    
+export default function TicketForm({ticketItems}) {    
     
     const [statePosition,setPosition]=useState([49.895077,-97.138451])
     
@@ -48,7 +48,7 @@ export default function TicketForm(props) {
         
     }
     
-        
+    let formCheck='exists'
     
 
     return (
@@ -70,7 +70,7 @@ export default function TicketForm(props) {
             <p><button onClick={handleUserLoc}>Use Current Location</button>Latitude: <input name='lat' value={statePosition[0]} onChange={handleChange}></input>
             Longitude<input name='lng' value={statePosition[1]} onChange={handleChange}></input></p>
            
-            <Map setPosition = {setPosition} statePosition={statePosition}/>
+            <Map setPosition = {setPosition} formCheck={formCheck} statePosition={statePosition} ticketItems={ticketItems}/>
             
             <ImageUpload />
             <button onClick={handleSubmit}>Submit</button>
