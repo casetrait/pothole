@@ -22,7 +22,7 @@ export default function IndexPage(props) {
         fetchTicketItems()
     },[]
     )
-    console.log(ticketItems)
+    
     return(
         <main className="">
                 <NavBar />
