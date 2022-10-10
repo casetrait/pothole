@@ -12,7 +12,7 @@ export default function IndexPage(props) {
     const [ticketItems, setTicketItems]=useState([]);
     
     
-    let fetchTicketItems=async ()=> {
+    let fetchTicketItems = async () => {
         const tickets = await ticketsAPI.getAll()
         setTicketItems(tickets)
     }
@@ -26,8 +26,11 @@ export default function IndexPage(props) {
     return(
         <main className="">
                 <NavBar />
-                <Map setPosition = {setPosition} statePosition={statePosition} ticketItems={ticketItems}/>
+                <div className="index-map-search">
                 <Search />
+                <Map className="index-map" setPosition = {setPosition} statePosition={statePosition} ticketItems={ticketItems}/>
+                </div>
+                <h1 className='ticklist-header'>Route Tickets:</h1>
                 <TicketList ticketItems={ticketItems}/>
         </main>
     )
