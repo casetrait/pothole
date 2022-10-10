@@ -1,8 +1,8 @@
 const Ticket = require("../../models/ticket");
 
-module.exports = { 
+module.exports = {
   index,
-  create 
+  create,
 };
 
 async function create(req, res) {
@@ -14,11 +14,10 @@ async function create(req, res) {
   }
 }
 
-
-async function index(req,res) {
+async function index(req, res) {
   try {
-    await Ticket.find({});
-    res.status(200).json("Fetch Succesful");
+    let tickets = await Ticket.find({});
+    res.status(200).json(tickets);
   } catch (err) {
     res.status(500).json(err);
   }

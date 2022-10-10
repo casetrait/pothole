@@ -1,3 +1,3 @@
 export function getAll() {
-    return fetch('/api/tickets').then(res => res.json());
+  return fetch("/api/tickets").then((res) => res.json());
 }
