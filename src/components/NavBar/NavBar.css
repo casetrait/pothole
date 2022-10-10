@@ -1,6 +1,25 @@
 nav {
-    font-size: x-large;
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
+    align-items: center;
+    background-color: black;
+}
+
+.menu {
+    color: antiquewhite;
+    font-size: 30px;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.menu:hover {
+    background-color: #646464;
+}
+
+.menu-logo:hover {
+    background-color: #646464;
+}
+
+.menu-logo {
+    padding: 3px 0 0 3px;
 }
