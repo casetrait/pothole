@@ -19,11 +19,11 @@ export default function TicketHeader(props) {
     )
 
     return (
-        <div className="ticketHeader">
+        <div className="ticket-header">
             <h2>Title: {props.ticket.title}</h2> 
             <h3>Category: {props.ticket.category}</h3>
             <p>Confirmation Votes: {conVote}</p>
-            <p>Resolved Votes: {conVote}</p>
+            <p>Resolved Votes: {resVote}</p>
         </div>
     );
 }
