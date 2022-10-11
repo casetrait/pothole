@@ -1,12 +1,17 @@
 import { useState, useEffect } from "react";
+import * as conVoteAPI from '../../utilities/con-votes-api'
+import TicketHeader from "../TicketHeader/TicketHeader";
 
 export default function TicketDetails(props) {
     
     const[conChecked, setConChecked] = useState(false)
     const[resChecked, setResChecked] = useState(false)
 
+    const ticket = props.ticket.id
+
     const handleConChange = () => { 
         setConChecked(!conChecked) 
+        console.log(ticket)
         //push or pop from array
     }
     const handleResChange = () => { 
