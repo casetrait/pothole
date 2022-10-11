@@ -16,6 +16,19 @@ export default function IndexPage({user}) {
         const tickets = await ticketsAPI.getAll()
         setTicketItems(tickets)
     }
+    let handleOnClickDelete=(ticketId)=>{
+        // let body={ticketId}
+        let jwt = localStorage.getItem('token')
+        let options = {
+            method:"DELETE",
+            headers:{
+                "Content-Type":"application/json",'Authorization': 'Bearer ' + jwt
+            },
+            // body: JSON.stringify(body)
+        }
+
+        ticketsAPI.deleteOne(ticketId,options)
+    }
     
     useEffect( ()=> {
         //load ticketItems 
@@ -31,7 +44,7 @@ export default function IndexPage({user}) {
                 <Map className="index-map" setPosition = {setPosition} statePosition={statePosition} ticketItems={ticketItems}/>
                 </div>
                 <h1 className='ticklist-header'>Route Tickets:</h1>
-                <TicketList ticketItems={ticketItems} user={user}/>
+                <TicketList ticketItems={ticketItems} user={user} handleOnClickDelete={handleOnClickDelete}/>
         </main>
     )
     
