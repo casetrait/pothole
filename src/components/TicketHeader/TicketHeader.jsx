@@ -18,14 +18,14 @@ export default function TicketHeader(props) {
     }
 
     function handleOnClick(){
-        let body={ticketId}
+        // let body={ticketId}
         let jwt = localStorage.getItem('token')
         let options = {
             method:"DELETE",
             headers:{
                 "Content-Type":"application/json",'Authorization': 'Bearer ' + jwt
             },
-            body: JSON.stringify(body)
+            // body: JSON.stringify(body)
         }
 
         ticketsAPI.deleteOne(ticketId,options)
