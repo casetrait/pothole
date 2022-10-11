@@ -35,7 +35,10 @@ export default class App extends Component {
         {this.state.user ? (
           <Routes>
             <Route path="/home" element={<HomePage />} />
-            <Route path="/tickets" element={<IndexPage />} />
+            <Route
+              path="/tickets"
+              element={<IndexPage user={this.state.user} />}
+            />
             <Route path="/new" element={<FormPage />} />
             <Route path="*" element={<Navigate to="/home" replace />} />
           </Routes>

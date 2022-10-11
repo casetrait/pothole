@@ -1,12 +1,14 @@
 import Map from "../Map/Map";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import { useState } from 'react' 
+import { useNavigate,redirect } from 'react-router-dom';
 import {getCurrentLatLng} from '../../utilities/Getloc'
 
 
 
 
 export default function TicketForm({ticketItems}) {    
+    const navigate = useNavigate()
     
     const [statePosition,setPosition]=useState([49.895077,-97.138451])        
     const[form,setForm]=useState({title: '',category:'',description:'',lat:'',long:''})
@@ -28,8 +30,9 @@ export default function TicketForm({ticketItems}) {
         }
         )
     }
-        
+            
     let handleSubmit = async ()=>{
+        
         let body = {...form,lat:statePosition[0],long:statePosition[1]}
         let jwt = localStorage.getItem('token')
         let options = {
@@ -42,9 +45,9 @@ export default function TicketForm({ticketItems}) {
         await fetch("/api/tickets",options)
         .then(res=>res.json())
         .then(data =>setForm({title: '',category:'',description:'',lat:'',long:''}))
+        navigate("/tickets")
         
-    }
-    
+        }
     let formCheck='exists'
     
 
@@ -71,6 +74,7 @@ export default function TicketForm({ticketItems}) {
             
             <ImageUpload>Upload Image</ImageUpload>
             <button onClick={handleSubmit}>Submit</button>
+            
         </div>
     );
 }

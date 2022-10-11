@@ -7,7 +7,7 @@ import Map from '../../components/Map/Map'
 import TicketList from '../../components/TicketList/TicketList'
 
 //Needs to be refactored into hooks
-export default function IndexPage(props) {
+export default function IndexPage({user}) {
     const [statePosition,setPosition]=useState([49.895077,-97.138451])
     const [ticketItems, setTicketItems]=useState([]);
     
@@ -31,7 +31,7 @@ export default function IndexPage(props) {
                 <Map className="index-map" setPosition = {setPosition} statePosition={statePosition} ticketItems={ticketItems}/>
                 </div>
                 <h1 className='ticklist-header'>Route Tickets:</h1>
-                <TicketList ticketItems={ticketItems}/>
+                <TicketList ticketItems={ticketItems} user={user}/>
         </main>
     )
     
