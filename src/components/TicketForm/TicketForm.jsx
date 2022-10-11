@@ -1,15 +1,17 @@
 import Map from "../Map/Map";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import { useState } from 'react' 
-import { useNavigate,redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {getCurrentLatLng} from '../../utilities/Getloc'
+import { useParams } from 'react-router-dom';
+
 
 
 
 
 export default function TicketForm({ticketItems}) {    
     const navigate = useNavigate()
-    
+    const params=useParams()
     const [statePosition,setPosition]=useState([49.895077,-97.138451])        
     const[form,setForm]=useState({title: '',category:'',description:'',lat:'',long:''})
     const title=form.title
@@ -18,7 +20,9 @@ export default function TicketForm({ticketItems}) {
     const lat=statePosition[0]
     const long = statePosition[1]
     
-
+    
+  
+    
     let handleUserLoc = async () =>{
         let userlatlng= await getCurrentLatLng()
         let currloc=[userlatlng.lat,userlatlng.lng]
@@ -30,7 +34,7 @@ export default function TicketForm({ticketItems}) {
         }
         )
     }
-            
+    
     let handleSubmit = async ()=>{
         
         let body = {...form,lat:statePosition[0],long:statePosition[1]}
@@ -47,8 +51,10 @@ export default function TicketForm({ticketItems}) {
         .then(data =>setForm({title: '',category:'',description:'',lat:'',long:''}))
         navigate("/tickets")
         
-        }
+    }
+
     let formCheck='exists'
+    
     
 
     return (
