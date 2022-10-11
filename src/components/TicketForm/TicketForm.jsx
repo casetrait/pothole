@@ -9,11 +9,11 @@ import { useParams } from 'react-router-dom';
 
 
 
-export default function TicketForm({ticketItems}) {    
+export default function TicketForm({ticketItems,reporter}) {    
     const navigate = useNavigate()
     const params=useParams()
     const [statePosition,setPosition]=useState([49.895077,-97.138451])        
-    const[form,setForm]=useState({title: '',category:'',description:'',lat:'',long:''})
+    const[form,setForm]=useState({reporter: reporter, title: '',category:'Pothole',description:'',lat:'',long:''})
     const title=form.title
     const category=form.category
     const description = form.description
@@ -78,7 +78,7 @@ export default function TicketForm({ticketItems}) {
            
             <Map setPosition = {setPosition} formCheck={formCheck} statePosition={statePosition} ticketItems={ticketItems}/>
             
-            <ImageUpload>Upload Image</ImageUpload>
+            {/* <ImageUpload>Upload Image</ImageUpload> */}
             <button onClick={handleSubmit}>Submit</button>
             
         </div>

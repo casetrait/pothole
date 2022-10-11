@@ -32,9 +32,8 @@ const ticketSchema = new Schema(
     long: Number,
     confirmationVote: [],
     resolvedVote: [],
-    isActive: {type: Boolean, default:true},
+    isActive: { type: Boolean, default: true },
     images: [imageSchema],
-    user: { type: Schema.Types.ObjectId, ref: "User" },
   },
   {
     timestamps: true,
