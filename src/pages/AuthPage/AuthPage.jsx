@@ -14,16 +14,17 @@ export default class AuthPage extends Component {
       <main className="">
         <div>
           <Logo />
-          <h3
+          {this.state.showLogin ? (<h3>LOGIN
+            <LoginForm setUserInState={this.props.setUserInState} /></h3>
+          ) : (<h3>SIGN UP
+            <SignUpForm setUserInState={this.props.setUserInState} /></h3>
+          )}
+          <h3 
             onClick={() => this.setState((state) => ({ showLogin: !state.showLogin }))}>
-            {this.state.showLogin ? "LOG IN" : "SIGN UP"}
+              
+            <button>{this.state.showLogin ? " OR SIGN UP " : " OR LOG IN"}</button>
           </h3>
         </div>
-        {this.state.showLogin ? (
-          <LoginForm setUserInState={this.props.setUserInState} />
-        ) : (
-          <SignUpForm setUserInState={this.props.setUserInState} />
-        )}
       </main>
     )
   }

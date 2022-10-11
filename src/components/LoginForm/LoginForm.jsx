@@ -52,7 +52,7 @@ export default class LoginForm extends Component {
               value={this.state.email}
               onChange={this.handleChange}
               required
-            />
+            /> <br/><br/>
             <label>Password</label>
             <input
               type="password"
@@ -60,7 +60,7 @@ export default class LoginForm extends Component {
               value={this.state.password}
               onChange={this.handleChange}
               required
-            />
+            /> <br/><br/>
             <button type="submit">LOG IN</button>
           </form>
         </div>
