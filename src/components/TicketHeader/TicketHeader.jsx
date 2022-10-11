@@ -21,7 +21,7 @@ export default function TicketHeader({ticket,handleOnClickDelete,user}) {
         tallyVotes()
     },[]
     )
-
+   
     return (
         <div className="ticket-header">
             <h2>Title: {ticket.title}</h2> 

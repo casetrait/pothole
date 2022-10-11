@@ -39,11 +39,14 @@ export default class App extends Component {
               path="/tickets"
               element={<IndexPage user={this.state.user} />}
             />
-            <Route
+            {/* <Route
               path="/tickets/:id"
               element={<FormPage user={this.state.user} />}
+            /> */}
+            <Route
+              path="/new"
+              element={<FormPage reporter={this.state.user} />}
             />
-            <Route path="/new" element={<FormPage />} />
             <Route path="*" element={<Navigate to="/home" replace />} />
           </Routes>
         ) : (

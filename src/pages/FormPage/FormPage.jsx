@@ -6,7 +6,7 @@ import TicketForm from '../../components/TicketForm/TicketForm'
 import * as ticketsAPI from '../../utilities/tickets-api';
 
 import React from 'react'
-export default function FormPage(props) {
+export default function FormPage({reporter}) {
     
     const [ticketItems, setTicketItems]=useState([]);
     
@@ -31,7 +31,7 @@ export default function FormPage(props) {
         return(
             <main className="">
                     <NavBar />
-                    <TicketForm ticketItems={ticketItems} />
+                    <TicketForm ticketItems={ticketItems} reporter={reporter} />
             </main>
         )
     }

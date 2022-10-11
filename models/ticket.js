@@ -15,7 +15,6 @@ const ticketSchema = new Schema(
     reporter: { type: Schema.Types.ObjectId, ref: "User" },
     title: String,
     category: {
-      default: "Pothole",
       type: String,
       enum: [
         "Pothole",
@@ -26,6 +25,7 @@ const ticketSchema = new Schema(
         "Speed Limit",
         "Snow",
         "Ice",
+        "Other"
       ],
     },
     description: String,
