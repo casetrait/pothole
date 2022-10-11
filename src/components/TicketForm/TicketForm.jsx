@@ -55,8 +55,6 @@ export default function TicketForm({ticketItems}) {
 
     let formCheck='exists'
     
-    
-
     return (
         <div className="">
             <h1>Ticket Form</h1>

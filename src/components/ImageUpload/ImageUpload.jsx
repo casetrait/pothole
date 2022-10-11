@@ -14,7 +14,7 @@
 // const S3Client = new S3(config)
 // const newFileName = 'testfile';
 
-// export default function ImageUpload(){
+export default function ImageUpload(){
     
 //     const [selectedFile, setSelectedFile] = useState('');
     
@@ -29,9 +29,9 @@
 //     .then(data => console.log(data)).catch(err => console.error(err))}
 
 
-//     return <div>
-//         <div>React S3 File Upload</div>
-//         <input type="file" onChange={handleFileInput}/>
-//         <button onClick={() => handleUpload(selectedFile)}> Upload Image</button>
-//     </div>
-// }
+    return <div>
+        <div>React S3 File Upload</div>
+        {/* <input type="file" onChange={handleFileInput}/>
+        <button onClick={() => handleUpload(selectedFile)}> Upload Image</button> */}
+    </div>
+}

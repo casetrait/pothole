@@ -15,6 +15,7 @@ const ticketSchema = new Schema(
     reporter: { type: Schema.Types.ObjectId, ref: "User" },
     title: String,
     category: {
+      default: "Pothole",
       type: String,
       enum: [
         "Pothole",
@@ -34,7 +35,6 @@ const ticketSchema = new Schema(
     resolvedVote: [],
     isActive: {type: Boolean, default:true},
     images: [imageSchema],
-    user: { type: Schema.Types.ObjectId, ref: "User" },
   },
   {
     timestamps: true,

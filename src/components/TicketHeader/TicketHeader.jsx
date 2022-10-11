@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import '../TicketItems/TicketItems.css'
 import * as ticketsAPI from '../../utilities/tickets-api';
 
-export default function TicketHeader({ticket,handleOnClickDelete,user_id}) {
+export default function TicketHeader({ticket,handleOnClickDelete,user}) {
     
     const[conVote, setConVote]=useState()
     const[resVote, setResVote]=useState()
@@ -28,7 +28,7 @@ export default function TicketHeader({ticket,handleOnClickDelete,user_id}) {
             <h3>Category: {ticket.category}</h3>
             <h3>Confirmation Votes: {conVote}</h3>
             <h3>Resolved Votes: {resVote}</h3>
-            {user_id===ticket.reporter?<button onClick={()=>handleOnClickDelete(ticket._id)}>Delete</button>:null}
+            {user._id===ticket.reporter?<button onClick={()=>handleOnClickDelete(ticket._id)}>Delete</button>:null}
         </div>
     );
 }
