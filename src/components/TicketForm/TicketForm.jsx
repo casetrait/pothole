@@ -8,10 +8,7 @@ import {getCurrentLatLng} from '../../utilities/Getloc'
 
 export default function TicketForm({ticketItems}) {    
     
-    const [statePosition,setPosition]=useState([49.895077,-97.138451])
-    
-    console.log(statePosition)
-        
+    const [statePosition,setPosition]=useState([49.895077,-97.138451])        
     const[form,setForm]=useState({title: '',category:'',description:'',lat:'',long:''})
     const title=form.title
     const category=form.category
