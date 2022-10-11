@@ -1,17 +1,18 @@
 import Map from "../Map/Map";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import { useState } from 'react' 
+import { useNavigate } from 'react-router-dom';
 import {getCurrentLatLng} from '../../utilities/Getloc'
+import { useParams } from 'react-router-dom';
+
 
 
 
 
 export default function TicketForm({ticketItems}) {    
-    
-    const [statePosition,setPosition]=useState([49.895077,-97.138451])
-    
-    console.log(statePosition)
-        
+    const navigate = useNavigate()
+    const params=useParams()
+    const [statePosition,setPosition]=useState([49.895077,-97.138451])        
     const[form,setForm]=useState({title: '',category:'',description:'',lat:'',long:''})
     const title=form.title
     const category=form.category
@@ -19,7 +20,9 @@ export default function TicketForm({ticketItems}) {
     const lat=statePosition[0]
     const long = statePosition[1]
     
-
+    
+  
+    
     let handleUserLoc = async () =>{
         let userlatlng= await getCurrentLatLng()
         let currloc=[userlatlng.lat,userlatlng.lng]
@@ -31,8 +34,9 @@ export default function TicketForm({ticketItems}) {
         }
         )
     }
-        
+    
     let handleSubmit = async ()=>{
+        
         let body = {...form,lat:statePosition[0],long:statePosition[1]}
         let jwt = localStorage.getItem('token')
         let options = {
@@ -45,10 +49,12 @@ export default function TicketForm({ticketItems}) {
         await fetch("/api/tickets",options)
         .then(res=>res.json())
         .then(data =>setForm({title: '',category:'',description:'',lat:'',long:''}))
+        navigate("/tickets")
         
     }
-    
+
     let formCheck='exists'
+    
     
 
     return (
@@ -72,8 +78,9 @@ export default function TicketForm({ticketItems}) {
            
             <Map setPosition = {setPosition} formCheck={formCheck} statePosition={statePosition} ticketItems={ticketItems}/>
             
-            <ImageUpload />
+            <ImageUpload>Upload Image</ImageUpload>
             <button onClick={handleSubmit}>Submit</button>
+            
         </div>
     );
 }

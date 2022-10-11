@@ -9,15 +9,22 @@ import React from 'react'
 export default function FormPage(props) {
     
     const [ticketItems, setTicketItems]=useState([]);
+    
+
     let fetchTicketItems=async ()=> {
         const tickets = await ticketsAPI.getAll()
         setTicketItems(tickets)
     }
+
+
+
     useEffect( ()=> {
         //load ticketItems 
         fetchTicketItems()
+        
     },[]
     )
+    
 
     
 
