@@ -1,7 +1,10 @@
-export default function Search(props) {
+export default function Search(
+    {handleYourTickets,user}
+    ) {
     return (
         <div className="">
-            <h3>Search and Filter Options Coming Soon</h3>
+            <h3 onClick = {()=>handleYourTickets(user._id)}>Your Tickets</h3>
+           
         </div>
     );
 }

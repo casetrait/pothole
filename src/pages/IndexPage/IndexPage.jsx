@@ -6,8 +6,8 @@ import Search from '../../components/Search/Search'
 import Map from '../../components/Map/Map'
 import TicketList from '../../components/TicketList/TicketList'
 
-//Needs to be refactored into hooks
-export default function IndexPage({user}) {
+
+export default function IndexPage({user,handleLogout}) {
     const [statePosition,setPosition]=useState([49.895077,-97.138451])
     const [ticketItems, setTicketItems]=useState([]);
     
@@ -29,18 +29,32 @@ export default function IndexPage({user}) {
 
         ticketsAPI.deleteOne(ticketId,options).then(fetchTicketItems())
     }
+    let handleYourTickets= async (userid)=>{
+        // console.log('clicked!')
+        const yourTickets = await ticketsAPI.getYourTickets(userid)
+        console.log(yourTickets)
+        setTicketItems(yourTickets)
+    }
     
     useEffect( ()=> {
         //load ticketItems 
         fetchTicketItems()
     },[]
     )
+
+    // useEffect( ()=> {
+    //     //load ticketItems 
+    //     },[ticketItems]
+    // )
     
     return(
         <main className="">
-                <NavBar />
+                <NavBar handleLogout = {handleLogout}/>
                 <div className="index-map-search">
-                <Search />
+                <Search 
+                handleYourTickets={handleYourTickets} 
+                user={user}
+                />
                 <Map className="index-map" setPosition = {setPosition} statePosition={statePosition} ticketItems={ticketItems}/>
                 </div>
                 <h1 className='ticklist-header'>Route Tickets:</h1>

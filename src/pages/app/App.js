@@ -24,6 +24,13 @@ export default class App extends Component {
       }
     }
   }
+  handleLogout = () => {
+    // let token = localStorage.getItem("token");
+    console.log("logout");
+    localStorage.removeItem("token");
+    // token = null;
+    this.setState({ user: "" });
+  };
 
   setUserInState = (incomingUserData) => {
     this.setState({ user: incomingUserData });
@@ -37,7 +44,12 @@ export default class App extends Component {
             <Route path="/home" element={<HomePage />} />
             <Route
               path="/tickets"
-              element={<IndexPage user={this.state.user} />}
+              element={
+                <IndexPage
+                  user={this.state.user}
+                  handleLogout={this.handleLogout}
+                />
+              }
             />
             {/* <Route
               path="/tickets/:id"

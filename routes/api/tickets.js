@@ -4,6 +4,7 @@ const ticketsCtrl = require("../../controllers/api/tickets");
 
 //Get all tickets
 router.get("/", ticketsCtrl.index);
+router.get("/yourtickets/:userid", ticketsCtrl.yourtickets);
 
 //Anything protected under here
 router.use(require("../../config/auth"));
