@@ -27,7 +27,7 @@ export default function IndexPage({user}) {
             // body: JSON.stringify(body)
         }
 
-        ticketsAPI.deleteOne(ticketId,options)
+        ticketsAPI.deleteOne(ticketId,options).then(fetchTicketItems())
     }
     
     useEffect( ()=> {
