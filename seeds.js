@@ -16,6 +16,7 @@ const Ticket = require('./models/Ticket');
         lat:49.904734565268114, 
         long:-97.14767932891847,
         confirmationVote: ['6341ca2bc688364cb6cb7a66','1','2','3'],
+        confirmationCount: 4,
         resolvedVote: ['6341ca2bc688364cb6cb7a66'],
    },
    {
@@ -26,6 +27,7 @@ const Ticket = require('./models/Ticket');
         lat:49.904671923861265, 
         long:-97.15705633163452,
         confirmationVote: ['6341ca2bc688364cb6cb7a66'],
+        confirmationCount: 1,
         resolvedVote: [],
     },
     {
@@ -36,6 +38,7 @@ const Ticket = require('./models/Ticket');
         lat:49.882297557358726, 
         long:-97.15400934219362,
         confirmationVote: ['6341ca2bc688364cb6cb7a66','1'],
+        confirmationCount: 2,
         resolvedVote: ['6341ca2bc688364cb6cb7a66','1','2','3'],
     },
     {
@@ -46,6 +49,7 @@ const Ticket = require('./models/Ticket');
       lat:49.89126083113183, 
       long:-97.1258568763733,
       confirmationVote: ['1','2','3'],
+      confirmationCount: 3,
       resolvedVote: [],
   },
   {
@@ -56,6 +60,7 @@ const Ticket = require('./models/Ticket');
     lat:49.88847614656325, 
     long:-97.1293866634369,
     confirmationVote: ['1','2','3'],
+    confirmationCount: 3,
     resolvedVote: ['1'],
   },
   {
@@ -66,6 +71,7 @@ const Ticket = require('./models/Ticket');
     lat:49.88020809563354, 
     long:-97.17414736747742,
     confirmationVote: ['1','2','3','4','5','6'],
+    confirmationCount: 6,
     resolvedVote: [],
   },
   {
@@ -76,6 +82,7 @@ const Ticket = require('./models/Ticket');
     lat:49.90797335988378, 
     long:-97.18029499053956,
     confirmationVote: ['1','2'],
+    confirmationCount: 2,
     resolvedVote: [],
   },
   ]);

@@ -32,6 +32,7 @@ const ticketSchema = new Schema(
     lat: Number,
     long: Number,
     confirmationVote: [],
+    confirmationCount: Number,
     resolvedVote: [],
     isActive: {type: Boolean, default:true},
     images: [imageSchema],
