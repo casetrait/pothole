@@ -7,9 +7,11 @@ import Map from '../../components/Map/Map'
 import TicketList from '../../components/TicketList/TicketList'
 
 
-export default function IndexPage({user}) {
-    const [statePosition,setPosition] = useState([49.895077,-97.138451])
-    const [ticketItems, setTicketItems] = useState([])
+export default function IndexPage({user,handleLogout}) {
+    const [statePosition,setPosition]=useState([49.895077,-97.138451])
+    const [ticketItems, setTicketItems]=useState([]);
+    
+    
     
     let fetchTicketItems = async () => {
         const tickets = await ticketsAPI.getAll()
@@ -24,19 +26,43 @@ export default function IndexPage({user}) {
                 "Content-Type":"application/json",'Authorization': 'Bearer ' + jwt
             }
         }
-        ticketsAPI.deleteOne(ticketId,options)
+
+        ticketsAPI.deleteOne(ticketId,options).then(fetchTicketItems())
+    }
+
+    let handleChangeCategory = async (e)=>{
+        if(e.target.value!="Select Category"){
+        const tickets = await ticketsAPI.getbyCategory(e.target.value)
+        setTicketItems(tickets)}
+
+    }
+
+   
+
+    let handleYourTickets= async (userid)=>{
+        
+        const yourTickets = await ticketsAPI.getYourTickets(userid)
+        setTicketItems(yourTickets)
     }
    
     useEffect( ()=> {
         fetchTicketItems()
     },[]
     )
+
+    
+   
     
     return(
         <main className="">
-                <NavBar />
+                <NavBar handleLogout = {handleLogout}/>
                 <div className="index-map-search">
-                <Search />
+                <Search 
+                fetchTicketItems={fetchTicketItems}
+                handleYourTickets={handleYourTickets}
+                handleChangeCategory={handleChangeCategory}
+                user={user}
+                />
                 <Map className="index-map" setPosition = {setPosition} statePosition={statePosition} ticketItems={ticketItems}/>
                 </div>
                 <h1 className='ticklist-header'>Route Tickets:</h1>
