@@ -12,6 +12,7 @@ export default function IndexPage({user,handleLogout}) {
     const [ticketItems, setTicketItems]=useState([]);
     
     
+    
     let fetchTicketItems = async () => {
         const tickets = await ticketsAPI.getAll()
         setTicketItems(tickets)
@@ -29,10 +30,19 @@ export default function IndexPage({user,handleLogout}) {
 
         ticketsAPI.deleteOne(ticketId,options).then(fetchTicketItems())
     }
+
+    let handleChangeCategory = async (e)=>{
+        if(e.target.value!="Select Category"){
+        const tickets = await ticketsAPI.getbyCategory(e.target.value)
+        setTicketItems(tickets)}
+
+    }
+
+   
+
     let handleYourTickets= async (userid)=>{
-        // console.log('clicked!')
+        
         const yourTickets = await ticketsAPI.getYourTickets(userid)
-        console.log(yourTickets)
         setTicketItems(yourTickets)
     }
     
@@ -42,17 +52,17 @@ export default function IndexPage({user,handleLogout}) {
     },[]
     )
 
-    // useEffect( ()=> {
-    //     //load ticketItems 
-    //     },[ticketItems]
-    // )
+    
+   
     
     return(
         <main className="">
                 <NavBar handleLogout = {handleLogout}/>
                 <div className="index-map-search">
                 <Search 
-                handleYourTickets={handleYourTickets} 
+                fetchTicketItems={fetchTicketItems}
+                handleYourTickets={handleYourTickets}
+                handleChangeCategory={handleChangeCategory}
                 user={user}
                 />
                 <Map className="index-map" setPosition = {setPosition} statePosition={statePosition} ticketItems={ticketItems}/>

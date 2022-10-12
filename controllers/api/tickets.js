@@ -6,6 +6,7 @@ module.exports = {
   create,
   delete: deleteTicket,
   yourtickets,
+  category,
 };
 
 async function create(req, res) {
@@ -36,9 +37,19 @@ async function deleteTicket(req, res) {
 }
 
 async function yourtickets(req, res) {
-  console.log(req.params.id);
   try {
     let tickets = await Ticket.find({ reporter: req.params.userid });
+
+    res.status(200).json(tickets);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
+
+async function category(req, res) {
+  try {
+    console.log(req.params.category);
+    let tickets = await Ticket.find({ category: req.params.category });
 
     res.status(200).json(tickets);
   } catch (err) {

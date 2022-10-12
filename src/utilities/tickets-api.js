@@ -7,5 +7,13 @@ export function deleteOne(id, options) {
 }
 
 export function getYourTickets(userid) {
-  return fetch(`/api/tickets/yourtickets/${userid}`).then((res) => res.json());
+  return fetch(`/api/tickets/filters/yourtickets/${userid}`).then((res) =>
+    res.json()
+  );
+}
+
+export function getbyCategory(category) {
+  return fetch(`/api/tickets/filters/category/${category}`).then((res) =>
+    res.json()
+  );
 }
