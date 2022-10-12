@@ -3,9 +3,6 @@ import Getclick from './Getclick'
 import './Map.css'
 import {iconSelect} from '../../utilities/iconSelector'
 
-
-
-
 export default  function Map({setPosition,statePosition,ticketItems,formCheck}) {
 
 

@@ -46,6 +46,11 @@ export function iconSelect(category) {
       iconUrl: require("../static/icons/icey.png"),
       ...iconDefs,
     });
+  } else if (category === "Other") {
+    icon = L.icon({
+      iconUrl: require("../static/icons/other.png"),
+      ...iconDefs,
+    });
   }
 
   return icon;

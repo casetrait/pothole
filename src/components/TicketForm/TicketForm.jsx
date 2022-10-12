@@ -1,17 +1,11 @@
 import Map from "../Map/Map";
-import ImageUpload from "../ImageUpload/ImageUpload";
+// import ImageUpload from "../ImageUpload/ImageUpload";
 import { useState } from 'react' 
 import { useNavigate } from 'react-router-dom';
 import {getCurrentLatLng} from '../../utilities/Getloc'
-import { useParams } from 'react-router-dom';
-
-
-
-
 
 export default function TicketForm({ticketItems,reporter}) {    
     const navigate = useNavigate()
-    const params=useParams()
     const [statePosition,setPosition]=useState([49.895077,-97.138451])        
     const[form,setForm]=useState({reporter: reporter, title: '',category:'Pothole',description:'',lat:'',long:''})
     const title=form.title
@@ -19,10 +13,7 @@ export default function TicketForm({ticketItems,reporter}) {
     const description = form.description
     const lat=statePosition[0]
     const long = statePosition[1]
-    
-    
-  
-    
+
     let handleUserLoc = async () =>{
         let userlatlng= await getCurrentLatLng()
         let currloc=[userlatlng.lat,userlatlng.lng]
@@ -68,6 +59,7 @@ export default function TicketForm({ticketItems,reporter}) {
             <option value="Speed Limit">Speed Limit</option>
             <option value="Snow">Snow</option>
             <option value="Ice">Ice</option>
+            <option value="Other">Other</option>
             </select>
             </h2>
             <h2>Description:<textarea name='description' value={form.description} onChange={handleChange} rows="4" cols="50"></textarea></h2>

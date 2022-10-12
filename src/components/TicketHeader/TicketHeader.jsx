@@ -1,26 +1,6 @@
-import { useState, useEffect } from 'react'
 import '../TicketItems/TicketItems.css'
-import * as ticketsAPI from '../../utilities/tickets-api';
 
-export default function TicketHeader({ticket,handleOnClickDelete,user}) {
-    
-    const[conVote, setConVote]=useState()
-    const[resVote, setResVote]=useState()
-    
-       
-
-    let tallyVotes=async()=> {
-        const conVotes = ticket.confirmationVote.length
-        const resVotes = ticket.resolvedVote.length
-        setConVote(conVotes)
-        setResVote(resVotes)
-    }
-
-
-    useEffect( ()=> {
-        tallyVotes()
-    },[]
-    )
+export default function TicketHeader({ticket,handleOnClickDelete,user,conVote,resVote,tallyVotes}) {
    
     return (
         <div className="ticket-header">
