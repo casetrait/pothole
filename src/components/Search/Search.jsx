@@ -5,7 +5,6 @@ export default function Search(
     return (
         <div className="">
             <h2>Filters:</h2>
-            <p onClick = {()=>fetchTicketItems()}>All Tickets </p>
             <p onClick = {()=>handleYourTickets(user._id)}>Your Tickets</p>
             <p>Categories:</p>
             <select onChange={handleChangeCategory}>
@@ -19,6 +18,7 @@ export default function Search(
             <option value="Ice">Ice</option>
             </select>
            
+            <p onClick = {()=>fetchTicketItems()}>RESET FILTERS </p>
         </div>
     );
 }
