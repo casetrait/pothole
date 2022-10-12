@@ -1,6 +1,6 @@
 
 export default function Search(
-    {fetchTicketItems,handleYourTickets,user,handleChangeCategory}
+    {fetchTicketItems,handleYourTickets,user,handleChangeCategory,handleMostConfirmed}
     ) {
     return (
         <div className="">
@@ -17,6 +17,7 @@ export default function Search(
             <option value="Snow">Snow</option>
             <option value="Ice">Ice</option>
             </select>
+            <p onClick = {()=>handleMostConfirmed()}>Most Confirmed</p>
            
             <p onClick = {()=>fetchTicketItems()}>RESET FILTERS </p>
         </div>

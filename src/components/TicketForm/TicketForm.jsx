@@ -3,6 +3,7 @@ import Map from "../Map/Map";
 import { useState } from 'react' 
 import { useNavigate } from 'react-router-dom';
 import {getCurrentLatLng} from '../../utilities/Getloc'
+import { useMap } from 'react-leaflet/hooks'
 
 export default function TicketForm({ticketItems,reporter}) {    
     const navigate = useNavigate()
@@ -13,6 +14,8 @@ export default function TicketForm({ticketItems,reporter}) {
     const description = form.description
     const lat=statePosition[0]
     const long = statePosition[1]
+
+   
 
     let handleUserLoc = async () =>{
         let userlatlng= await getCurrentLatLng()
