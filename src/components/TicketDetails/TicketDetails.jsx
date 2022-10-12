@@ -1,39 +1,15 @@
-import { useState, useEffect } from "react";
-import * as conVoteAPI from '../../utilities/con-votes-api'
-import TicketHeader from "../TicketHeader/TicketHeader";
+import { useEffect } from "react";
 
-export default function TicketDetails(props) {
-    
-    const[conChecked, setConChecked] = useState(false)
-    const[resChecked, setResChecked] = useState(false)
-
-    const ticket = props.ticket.id
-
-    const handleConChange = () => { 
-        setConChecked(!conChecked) 
-        console.log(ticket)
-        //push or pop from array
-    }
-    const handleResChange = () => { 
-        setResChecked(!resChecked) 
-        //push or pop from array
-    }
-
-    let checkUserVote = async() => {
-        // const conVote = await conVoteAPI.getOne()
-        // const resVote = await resVoteAPI.getOne()
-        // setConChecked(conVote)
-        // setResChecked(resVote)
-    }
+export default function TicketDetails({ticket, checkUserVotes, conChecked, handleConChange, resChecked, handleResChange}) {
 
     useEffect( ()=> {
-        // checkUserVotes()
+        checkUserVotes()
     },[]
     ) 
     
     return (
         <div className="ticket-details">
-            <p>Description: {props.ticket.description}</p>
+            <p>Description: {ticket.description}</p>
             <p>Images Coming Soon!</p>
                 <p>Vote to confirm ticket accuracy:</p>
                 <input 
