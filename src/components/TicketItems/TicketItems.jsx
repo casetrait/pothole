@@ -13,16 +13,18 @@ export default function TicketItems({ticket, user, handleOnClickDelete, fetchTic
     const[conVote, setConVote]=useState()
     const[resVote, setResVote]=useState()
 
-    let tallyVotes = async()=> {
+    let tallyVotes = async ()=> {
         const conVotes = ticket.confirmationVote.length
         const resVotes = ticket.resolvedVote.length
         setConVote(conVotes)
         setResVote(resVotes)
     }
-
-    const handleConChange = () => { 
-        setConChecked(!conChecked) 
-        let body={ticket, user}
+    const handleConChange = async () => { 
+        setConChecked((prevCon)=>!prevCon)
+        await tallyVotes()
+        let ticketAddCount= {...ticket,confirmationCount:conVote}
+        console.log(ticketAddCount.confirmationCount, '<-frontend')
+        let body={ticketAddCount,user}
         let jwt = localStorage.getItem('token')
         let options = {
             method:"PUT",
@@ -32,13 +34,14 @@ export default function TicketItems({ticket, user, handleOnClickDelete, fetchTic
             body: JSON.stringify(body)
         }
         ticket.confirmationVote.includes(user._id) ?
-            VoteAPI.removeConVote(ticket,options).then(fetchTicketItems()).then(tallyVotes()).then(fetchTicketItems())
+        await VoteAPI.removeConVote(ticket,options).then(fetchTicketItems()).then(tallyVotes()).then(fetchTicketItems())
             :
-            VoteAPI.addConVote(ticket,options).then(fetchTicketItems()).then(tallyVotes()).then(fetchTicketItems())
+            await VoteAPI.addConVote(ticket,options).then(fetchTicketItems()).then(tallyVotes()).then(fetchTicketItems())
     }
 
-    const handleResChange = () => { 
+    const handleResChange =  () => {
         setResChecked(!resChecked) 
+        tallyVotes()
         let body={ticket, user}
         let jwt = localStorage.getItem('token')
         let options = {
@@ -49,10 +52,10 @@ export default function TicketItems({ticket, user, handleOnClickDelete, fetchTic
             body: JSON.stringify(body)
         }
         ticket.resolvedVote.includes(user._id) ?
-            VoteAPI.removeResVote(ticket,options).then(fetchTicketItems()).then(tallyVotes()).then(fetchTicketItems())
+             VoteAPI.removeResVote(ticket,options).then(fetchTicketItems()).then(tallyVotes()).then(fetchTicketItems())
 
             :
-            VoteAPI.addResVote(ticket,options).then(fetchTicketItems()).then(tallyVotes()).then(fetchTicketItems())
+             VoteAPI.addResVote(ticket,options).then(fetchTicketItems()).then(tallyVotes()).then(fetchTicketItems())
     }
 
     let checkUserVotes = async() => {
@@ -66,7 +69,8 @@ export default function TicketItems({ticket, user, handleOnClickDelete, fetchTic
 
     useEffect( ()=> {
         tallyVotes()
-    },[ticket]
+        
+    },[ticket,conVote]
     )
 
     return (

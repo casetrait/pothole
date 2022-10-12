@@ -17,3 +17,7 @@ export function getbyCategory(category) {
     res.json()
   );
 }
+
+export function mostConfirmed() {
+  return fetch(`/api/tickets/filters/mostconfirmed/`).then((res) => res.json());
+}

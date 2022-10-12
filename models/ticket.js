@@ -25,7 +25,7 @@ const ticketSchema = new Schema(
         "Speed Limit",
         "Snow",
         "Ice",
-        "Other"
+        "Other",
       ],
     },
     description: String,
@@ -34,7 +34,7 @@ const ticketSchema = new Schema(
     confirmationVote: [],
     confirmationCount: Number,
     resolvedVote: [],
-    isActive: {type: Boolean, default:true},
+    isActive: { type: Boolean, default: true },
     images: [imageSchema],
   },
   {
