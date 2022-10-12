@@ -1,5 +1,4 @@
 import './FormPage.css'
-import { Component } from 'react'
 import { useState, useEffect } from 'react'
 import NavBar from '../../components/NavBar/NavBar'
 import TicketForm from '../../components/TicketForm/TicketForm'
@@ -10,24 +9,17 @@ export default function FormPage({reporter}) {
     
     const [ticketItems, setTicketItems]=useState([]);
     
-
     let fetchTicketItems=async ()=> {
         const tickets = await ticketsAPI.getAll()
         setTicketItems(tickets)
     }
 
-
-
     useEffect( ()=> {
         //load ticketItems 
         fetchTicketItems()
-        
     },[]
     )
     
-
-    
-
         return(
             <main className="">
                     <NavBar />

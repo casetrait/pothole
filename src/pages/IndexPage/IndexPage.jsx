@@ -1,6 +1,6 @@
 import './IndexPage.css'
 import { useState, useEffect } from 'react'
-import * as ticketsAPI from '../../utilities/tickets-api';
+import * as ticketsAPI from '../../utilities/tickets-api'
 import NavBar from '../../components/NavBar/NavBar'
 import Search from '../../components/Search/Search'
 import Map from '../../components/Map/Map'
@@ -17,15 +17,14 @@ export default function IndexPage({user,handleLogout}) {
         const tickets = await ticketsAPI.getAll()
         setTicketItems(tickets)
     }
+
     let handleOnClickDelete=(ticketId)=>{
-        // let body={ticketId}
         let jwt = localStorage.getItem('token')
         let options = {
             method:"DELETE",
             headers:{
                 "Content-Type":"application/json",'Authorization': 'Bearer ' + jwt
-            },
-            // body: JSON.stringify(body)
+            }
         }
 
         ticketsAPI.deleteOne(ticketId,options).then(fetchTicketItems())
@@ -45,9 +44,8 @@ export default function IndexPage({user,handleLogout}) {
         const yourTickets = await ticketsAPI.getYourTickets(userid)
         setTicketItems(yourTickets)
     }
-    
+   
     useEffect( ()=> {
-        //load ticketItems 
         fetchTicketItems()
     },[]
     )
@@ -68,7 +66,12 @@ export default function IndexPage({user,handleLogout}) {
                 <Map className="index-map" setPosition = {setPosition} statePosition={statePosition} ticketItems={ticketItems}/>
                 </div>
                 <h1 className='ticklist-header'>Route Tickets:</h1>
-                <TicketList ticketItems={ticketItems} user={user} handleOnClickDelete={handleOnClickDelete}/>
+                <TicketList 
+                    ticketItems={ticketItems} 
+                    user={user} 
+                    handleOnClickDelete={handleOnClickDelete}
+                    fetchTicketItems={fetchTicketItems}
+                />
         </main>
     )
     
