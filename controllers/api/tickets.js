@@ -7,6 +7,7 @@ module.exports = {
   delete: deleteTicket,
   yourtickets,
   category,
+  mostconfirmed,
 };
 
 async function create(req, res) {
@@ -48,8 +49,16 @@ async function yourtickets(req, res) {
 
 async function category(req, res) {
   try {
-    console.log(req.params.category);
     let tickets = await Ticket.find({ category: req.params.category });
+
+    res.status(200).json(tickets);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
+async function mostconfirmed(req, res) {
+  try {
+    let tickets = await Ticket.find({}).sort({ confirmationCount: "desc" });
 
     res.status(200).json(tickets);
   } catch (err) {

@@ -13,11 +13,7 @@ export default function IndexPage({user,handleLogout}) {
     
     
     
-    let fetchTicketItems = async () => {
-        const tickets = await ticketsAPI.getAll()
-        setTicketItems(tickets)
-    }
-
+    //delete post CRUD function
     let handleOnClickDelete=(ticketId)=>{
         let jwt = localStorage.getItem('token')
         let options = {
@@ -26,25 +22,34 @@ export default function IndexPage({user,handleLogout}) {
                 "Content-Type":"application/json",'Authorization': 'Bearer ' + jwt
             }
         }
-
+        
         ticketsAPI.deleteOne(ticketId,options).then(fetchTicketItems())
     }
-
+    
+    
+    //filter functions
+    let fetchTicketItems = async () => {
+        const tickets = await ticketsAPI.getAll()
+        setTicketItems(tickets)
+    }
+    
     let handleChangeCategory = async (e)=>{
         if(e.target.value!="Select Category"){
         const tickets = await ticketsAPI.getbyCategory(e.target.value)
         setTicketItems(tickets)}
 
     }
-
-   
-
     let handleYourTickets= async (userid)=>{
         
         const yourTickets = await ticketsAPI.getYourTickets(userid)
         setTicketItems(yourTickets)
     }
-   
+   let handleMostConfirmed = async ()=>{
+    const mostConfirmed = await ticketsAPI.mostConfirmed()
+    setTicketItems(mostConfirmed)
+
+   }
+
     useEffect( ()=> {
         fetchTicketItems()
     },[]
@@ -61,6 +66,7 @@ export default function IndexPage({user,handleLogout}) {
                 fetchTicketItems={fetchTicketItems}
                 handleYourTickets={handleYourTickets}
                 handleChangeCategory={handleChangeCategory}
+                handleMostConfirmed={handleMostConfirmed}
                 user={user}
                 />
                 <Map className="index-map" setPosition = {setPosition} statePosition={statePosition} ticketItems={ticketItems}/>
