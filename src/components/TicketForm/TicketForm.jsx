@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import {getCurrentLatLng} from '../../utilities/Getloc'
 import { useMap } from 'react-leaflet/hooks'
+import './TicketForm.css'
 
 export default function TicketForm({ticketItems,reporter}) {    
     const navigate = useNavigate()
@@ -50,30 +51,31 @@ export default function TicketForm({ticketItems,reporter}) {
     let formCheck='exists'
     
     return (
-        <div className="">
-            <h1>Ticket Form</h1>
-            
-            <h2>Title:<input name='title' value={form.title} onChange={handleChange}></input></h2>
-            <h2>Category:<select name='category' value={form.category} onChange={handleChange}>
-            <option value="Pothole">Pothole</option>
-            <option value="Drainage">Drainage</option>
-            <option value="Pedestrian">Pedestrian</option>
-            <option value="Traffic Light">Traffic Light</option>
-            <option value="Speed Limit">Speed Limit</option>
-            <option value="Snow">Snow</option>
-            <option value="Ice">Ice</option>
-            <option value="Other">Other</option>
-            </select>
-            </h2>
-            <h2>Description:<textarea name='description' value={form.description} onChange={handleChange} rows="4" cols="50"></textarea></h2>
-            <p><button onClick={handleUserLoc}>Use Current Location</button>Latitude: <input name='lat' value={statePosition[0]} onChange={handleChange}></input>
-            Longitude<input name='lng' value={statePosition[1]} onChange={handleChange}></input></p>
-           
-            <Map setPosition = {setPosition} formCheck={formCheck} statePosition={statePosition} ticketItems={ticketItems}/>
-            
-            {/* <ImageUpload>Upload Image</ImageUpload> */}
-            <button onClick={handleSubmit}>Submit</button>
-            
+        <div className="all-form">
+            <div className="form">
+                <h1>Ticket Form</h1>
+                <h2>Title:<input name='title' value={form.title} onChange={handleChange}></input></h2>
+                <h2>Category:
+                    <select name='category' value={form.category} onChange={handleChange}>
+                        <option value="Pothole">Pothole</option>
+                        <option value="Drainage">Drainage</option>
+                        <option value="Pedestrian">Pedestrian</option>
+                        <option value="Traffic Light">Traffic Light</option>
+                        <option value="Speed Limit">Speed Limit</option>
+                        <option value="Snow">Snow</option>
+                        <option value="Ice">Ice</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </h2>
+                <h2>Description:</h2>
+                <textarea name='description' value={form.description} onChange={handleChange} rows="4" cols="50"></textarea>
+                <button onClick={handleSubmit}>Submit</button>
+            </div>
+            <div className="form-map">
+                <Map setPosition = {setPosition} formCheck={formCheck} statePosition={statePosition} ticketItems={ticketItems}/>
+                <p><button onClick={handleUserLoc}>Use Current Location</button>Latitude: <input name='lat' value={statePosition[0]} onChange={handleChange}></input>
+                    Longitude<input name='lng' value={statePosition[1]} onChange={handleChange}></input></p>
+            </div>
         </div>
     );
 }

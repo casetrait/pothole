@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import * as VoteAPI from '../../utilities/votes-api'
 import TicketHeader from "../TicketHeader/TicketHeader";
 import TicketDetails from "../TicketDetails/TicketDetails";
-import '../TicketList/TicketList.css'
+import '../TicketItems/TicketItems.css'
 
 export default function TicketItems({ticket, user, handleOnClickDelete, fetchTicketItems,setPosition}) {
 
@@ -77,19 +77,19 @@ export default function TicketItems({ticket, user, handleOnClickDelete, fetchTic
     )
 
     return (
-        <div className="">
+        <div className="all-tickets">
             <button onClick={handleDetail} className="header-button">
-                <TicketHeader                
-                    ticket={ticket}
-                    user={user}
-                    key = {ticket._id} 
-                    handleOnClickDelete={handleOnClickDelete} 
-                    conVote={conVote}
-                    resVote={resVote}
-                    tallyVotes={tallyVotes}
-                    
-                />
-                    <p onClick={()=>{return setPosition([ticket.lat,ticket.long])}}> Locate</p>
+                <div className="inner-header-button" onClick={()=>{return setPosition([ticket.lat,ticket.long])}}>
+                    <TicketHeader                
+                        ticket={ticket}
+                        user={user}
+                        key = {ticket._id} 
+                        handleOnClickDelete={handleOnClickDelete} 
+                        conVote={conVote}
+                        resVote={resVote}
+                        tallyVotes={tallyVotes}
+                    />
+                </div>
             </button>
             { show && <TicketDetails             
                 ticket={ticket}
