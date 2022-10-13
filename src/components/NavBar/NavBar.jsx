@@ -1,10 +1,10 @@
 import Logo from "../Logo/Logo";
 import { Link } from "react-router-dom";
 import './NavBar.css'
-import all from '../../static/images/all.png'
-import New from '../../static/images/new.png'
-import logout from '../../static/images/logout.png'
-import login from '../../static/images/login.png'
+import all from '../../static/images/All.png'
+import New from '../../static/images/New.png'
+import logout from '../../static/images/Logout.png'
+import login from '../../static/images/Login.png'
 
 
 export default function NavBar({handleLogout}) {
