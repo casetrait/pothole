@@ -54,7 +54,6 @@ export default class App extends Component {
                 />
               }
             />
-
             <Route
               path="/new"
               element={
@@ -67,7 +66,14 @@ export default class App extends Component {
             <Route path="*" element={<Navigate to="/home" replace />} />
           </Routes>
         ) : (
-          <AuthPage setUserInState={this.setUserInState} />
+          <Routes>
+            <Route
+              path="/login"
+              element={<AuthPage setUserInState={this.setUserInState} />}
+            />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="*" element={<Navigate to="/home" replace />} />
+          </Routes>
         )}
       </main>
     );
