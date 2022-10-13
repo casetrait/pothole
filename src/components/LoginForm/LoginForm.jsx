@@ -54,7 +54,7 @@ export default class LoginForm extends Component {
               required
             /> <br/><br/>
             <label>Password: </label>
-            <input calssName='input'
+            <input className='input'
               type="password"
               name="password"
               value={this.state.password}

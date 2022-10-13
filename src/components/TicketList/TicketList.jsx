@@ -1,5 +1,4 @@
 import TicketItems from "../TicketItems/TicketItems";
-import "./TicketList.css"
 
 export default function TicketList({ticketItems,user,handleOnClickDelete,fetchTicketItems,setPosition}) {
     

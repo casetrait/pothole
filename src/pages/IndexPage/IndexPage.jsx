@@ -1,6 +1,7 @@
 import './IndexPage.css'
 import { useState, useEffect } from 'react'
 import * as ticketsAPI from '../../utilities/tickets-api'
+import OverflowScrolling from 'react-overflow-scrolling';
 import NavBar from '../../components/NavBar/NavBar'
 import Search from '../../components/Search/Search'
 import Map from '../../components/Map/Map'
@@ -22,8 +23,7 @@ export default function IndexPage({user,handleLogout}) {
             headers:{
                 "Content-Type":"application/json",'Authorization': 'Bearer ' + jwt
             }
-        }
-        
+        }   
         ticketsAPI.deleteOne(ticketId,options).then(fetchTicketItems())
     }
     
@@ -35,7 +35,7 @@ export default function IndexPage({user,handleLogout}) {
     }
     
     let handleChangeCategory = async (e)=>{
-        if(e.target.value!="Select Category"){
+        if(e.target.value!=="Select Category"){
         const tickets = await ticketsAPI.getbyCategory(e.target.value)
         setTicketItems(tickets)}
 
@@ -80,34 +80,32 @@ export default function IndexPage({user,handleLogout}) {
                         handleMostResolved={handleMostResolved}
                         user={user}
                     />
-                <Map className="index-map" setPosition = {setPosition}
-                    statePosition={statePosition}
-                    ticketItems={ticketItems}
-                    handleMarkerClickSearch={handleMarkerClickSearch}
-                />
-                <div>
-                    <h2 id="stat-head">Statistics:</h2>
-                    <div className="stats">
-                        <h4>User Leaderboard:</h4>
-                        <p>Coming Soon</p>
-                        <h4>Top Cities:</h4>
-                        <p>Coming Soon</p>
-                        <h4>Worst Cities:</h4>
-                        <p>Coming Soon</p>
+                    <Map className="index-map" setPosition = {setPosition}
+                        statePosition={statePosition}
+                        ticketItems={ticketItems}
+                        handleMarkerClickSearch={handleMarkerClickSearch}
+                    />
+                    <div>
+                        <h2 id="stat-head">Statistics:</h2>
+                        <div className="stats">
+                            <h4>User Leaderboard:</h4>
+                            <p>Coming Soon</p>
+                            <h4>Top Cities:</h4>
+                            <p>Coming Soon</p>
+                            <h4>Worst Cities:</h4>
+                            <p>Coming Soon</p>
+                        </div>
                     </div>
                 </div>
-
-                </div>
-                <TicketList 
-                    ticketItems={ticketItems} 
-                    user={user} 
-                    handleOnClickDelete={handleOnClickDelete}
-                    fetchTicketItems={fetchTicketItems}
-                    setPosition = {setPosition}
-                                 
-                    
-                    
-                />
+                <OverflowScrolling className='overflow-scrolling'>
+                    <TicketList id="list"
+                        ticketItems={ticketItems} 
+                        user={user} 
+                        handleOnClickDelete={handleOnClickDelete}
+                        fetchTicketItems={fetchTicketItems}
+                        setPosition = {setPosition}
+                    />
+                </OverflowScrolling>
         </main>
     )
     
