@@ -26,5 +26,5 @@
 .overflow-scrolling {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    height: 400px;
+    height: 500px;
 }

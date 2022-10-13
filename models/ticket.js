@@ -34,7 +34,7 @@ const ticketSchema = new Schema(
     confirmationVote: [],
     confirmationCount: Number,
     resolvedVote: [],
-    resolvedCount: Number,
+    resolvedCount: {type: Number, default: 0},
     isActive: { type: Boolean, default: true },
     images: [imageSchema],
   },
