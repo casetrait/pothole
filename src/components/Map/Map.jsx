@@ -1,5 +1,6 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import MarkerClusterGroup from '@changey/react-leaflet-markercluster';
+import L from 'leaflet';
 import Getclick from './Getclick'
 import Flyto from './Flyto'
 
@@ -8,9 +9,15 @@ import {iconSelect} from '../../utilities/iconSelector'
 
 
 export default  function Map({setPosition,statePosition,ticketItems,formCheck,handleMarkerClickSearch}) {
-   
-   
-   
+
+  const createClusterCustomIcon = function (cluster) {
+    return L.divIcon({
+      html: `<span>${cluster.getChildCount()}</span>`,
+      className: 'marker-cluster-custom',
+      iconSize: L.point(50, 50, true),
+    });
+  };
+      
 
     return (
         
@@ -25,7 +32,7 @@ export default  function Map({setPosition,statePosition,ticketItems,formCheck,ha
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
      
-       <MarkerClusterGroup>
+       <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}>
         {ticketItems.map(ticket=>
         <Marker key = {ticket._id}
         position={[ticket.lat, ticket.long]}
@@ -35,7 +42,7 @@ export default  function Map({setPosition,statePosition,ticketItems,formCheck,ha
         }}
         >
         <Flyto position={statePosition}/> 
-        {/* [ticket.lat, ticket.long] */}
+        
           <Popup >
             <b>{ticket.category}</b> <br/>
             {ticket.title}

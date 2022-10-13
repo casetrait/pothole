@@ -1,7 +1,7 @@
 import './Search.css'
 
 export default function Search(
-    {fetchTicketItems,handleYourTickets,user,handleChangeCategory,handleMostConfirmed}
+    {fetchTicketItems,handleYourTickets,user,handleChangeCategory,handleMostConfirmed,handleMostResolved}
     ) {
     return (
         <div className="filter-list">
@@ -21,7 +21,7 @@ export default function Search(
                 </select>
             </button>
             <button className='filter-button' onClick = {()=>handleMostConfirmed()}>Most Confirmed</button>
-            <button className='filter-button' onClick = {()=>handleMostConfirmed()}>Most Resolved</button>
+            <button className='filter-button' onClick = {()=>handleMostResolved()}>Most Resolved</button>
             <button className='filter-button' onClick = {()=>fetchTicketItems()}>Most Recent</button>
         </div>
     );
