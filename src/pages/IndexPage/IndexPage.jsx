@@ -1,6 +1,7 @@
 import './IndexPage.css'
 import { useState, useEffect } from 'react'
 import * as ticketsAPI from '../../utilities/tickets-api'
+import OverflowScrolling from 'react-overflow-scrolling';
 import NavBar from '../../components/NavBar/NavBar'
 import Search from '../../components/Search/Search'
 import Map from '../../components/Map/Map'
@@ -95,16 +96,15 @@ export default function IndexPage({user,handleLogout}) {
                 </div>
 
                 </div>
-                <TicketList 
-                    ticketItems={ticketItems} 
-                    user={user} 
-                    handleOnClickDelete={handleOnClickDelete}
-                    fetchTicketItems={fetchTicketItems}
-                    setPosition = {setPosition}
-                                 
-                    
-                    
-                />
+                <OverflowScrolling className='overflow-scrolling'>
+                    <TicketList id="list"
+                        ticketItems={ticketItems} 
+                        user={user} 
+                        handleOnClickDelete={handleOnClickDelete}
+                        fetchTicketItems={fetchTicketItems}
+                        setPosition = {setPosition}
+                    />
+                </OverflowScrolling>
         </main>
     )
     

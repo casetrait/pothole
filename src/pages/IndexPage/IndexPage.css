@@ -1,7 +1,6 @@
 .index-map-search {
     display: grid;
     grid-template-columns: 180px auto 180px;
-    background-color: rgb(32, 32, 32);
     border-bottom: 3px white solid;
     padding: 12px 0;
 }
@@ -9,18 +8,23 @@
 .ticklist-header {
     text-align: left;
     padding: 20px;
-    background-color: rgb(32, 32, 32);
     margin: 0;
 }
 
 .stats {
-    border-radius: 18px;
-    border: 8px solid rgb(32, 32, 32);
+    border-radius: 10px;
     background-color:#464545;
     margin: 0 20px;
     height: 300px;
+    padding: 5px 0;
 }
 
 #stat-head {
     margin: 11px 0;
+}
+
+.overflow-scrolling {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    height: 400px;
 }

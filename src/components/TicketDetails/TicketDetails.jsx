@@ -1,4 +1,7 @@
 import { useEffect } from "react";
+import Checkbox from '@mui/material/Checkbox';
+import { green } from '@mui/material/colors';
+import { red } from '@mui/material/colors';
 
 export default function TicketDetails({ticket, checkUserVotes, conChecked, handleConChange, resChecked, handleResChange}) {
 
@@ -20,7 +23,13 @@ export default function TicketDetails({ticket, checkUserVotes, conChecked, handl
             </div>
             <div>
                 <p>Vote to confirm ticket accuracy:</p>
-                <input 
+                <Checkbox 
+                    sx={{
+                      color: red[800],
+                      '&.Mui-checked': {
+                        color: red[600],
+                      },
+                    }}
                     type="checkbox" 
                     checked={conChecked}
                     onChange={handleConChange}
@@ -28,7 +37,13 @@ export default function TicketDetails({ticket, checkUserVotes, conChecked, handl
             </div>
             <div>
                 <p>Vote if ticket issue is resolved:</p>
-                <input 
+                <Checkbox 
+                    sx={{
+                        color: green[800],
+                        '&.Mui-checked': {
+                        color: green[600],
+                        },
+                    }}
                     type="checkbox" 
                     checked={resChecked}
                     onChange={handleResChange}
