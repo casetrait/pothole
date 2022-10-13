@@ -9,6 +9,7 @@ module.exports = {
   category,
   mostconfirmed,
   mostresolved,
+  showresolved,
   markerSearch,
 };
 
@@ -96,11 +97,23 @@ async function mostresolved(req, res) {
   try {
     let tickets = await Ticket.find({
       isActive: true,
-      resolvedCount: { $lte: 5 },
+      resolvedCount: { $lte: 4 },
     }).sort({
       resolvedCount: "desc",
     });
+    res.status(200).json(tickets);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
 
+async function showresolved(req, res) {
+  try {
+    let tickets = await Ticket.find({
+      isActive: false,
+    }).sort({
+      createdAt: "desc",
+    });
     res.status(200).json(tickets);
   } catch (err) {
     res.status(500).json(err);

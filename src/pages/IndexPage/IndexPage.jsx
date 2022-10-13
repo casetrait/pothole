@@ -54,13 +54,17 @@ export default function IndexPage({user,handleLogout}) {
         const mostResolved = await ticketsAPI.mostResolved()
     setTicketItems(mostResolved)
     }
-
+    let handleShowResolved= async()=>{
+        const showResolved = await ticketsAPI.showResolved()
+    setTicketItems(showResolved)
+    }
    
    let handleMarkerClickSearch = async (ticketid,lat,long) =>{
     setPosition([lat,long])
     const markerClickSearch = await ticketsAPI.markerSearch(ticketid)
     setTicketItems([markerClickSearch])
    }
+
 
    
     useEffect( ()=> {
@@ -80,6 +84,7 @@ export default function IndexPage({user,handleLogout}) {
                         handleChangeCategory={handleChangeCategory}
                         handleMostConfirmed={handleMostConfirmed}
                         handleMostResolved={handleMostResolved}
+                        handleShowResolved={handleShowResolved}
                         user={user}
                     />
                     <Map className="index-map" setPosition = {setPosition}

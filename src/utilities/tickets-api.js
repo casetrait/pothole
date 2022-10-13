@@ -26,6 +26,10 @@ export function mostResolved() {
   return fetch(`/api/tickets/filters/mostresolved/`).then((res) => res.json());
 }
 
+export function showResolved() {
+  return fetch(`/api/tickets/filters/showresolved/`).then((res) => res.json());
+}
+
 export function markerSearch(ticketid) {
   return fetch(`/api/tickets/filters/markerSearch/${ticketid}`).then((res) =>
     res.json()

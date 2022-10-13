@@ -8,6 +8,7 @@ router.get("/filters/yourtickets/:userid", ticketsCtrl.yourtickets);
 router.get("/filters/category/:category", ticketsCtrl.category);
 router.get("/filters/mostconfirmed/", ticketsCtrl.mostconfirmed);
 router.get("/filters/mostresolved/", ticketsCtrl.mostresolved);
+router.get("/filters/showresolved/", ticketsCtrl.showresolved);
 router.get("/filters/markerSearch/:ticketid", ticketsCtrl.markerSearch);
 
 //Anything protected under here
