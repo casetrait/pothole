@@ -38,10 +38,7 @@ async function index(req, res) {
 
 async function deleteTicket(req, res) {
   try {
-    console.log(req.user._id, "<--user id");
     let ticket = await Ticket.findById(req.params.id);
-
-    console.log(ticket.reporter, "<--reporter id");
     if (req.user._id == ticket.reporter) {
       ticket = await Ticket.findByIdAndDelete(req.params.id);
     }

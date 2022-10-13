@@ -10,7 +10,6 @@ export default class App extends Component {
   state = {
     user: null,
   };
-
   componentDidMount() {
     let token = localStorage.getItem("token");
     if (token) {
