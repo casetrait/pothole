@@ -11,7 +11,8 @@ import TicketList from '../../components/TicketList/TicketList'
 export default function IndexPage({user,handleLogout}) {
 
 
-    const [statePosition,setPosition]=useState([49.895077,-97.138451])
+    // const [statePosition,setPosition]=useState([49.895077,-97.138451]) //winnipeg
+    const [statePosition,setPosition]=useState([43.651070,-79.347015])  //Toronto  
     const [ticketItems, setTicketItems]=useState([]);
     
     
