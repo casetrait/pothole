@@ -41,7 +41,10 @@ export default class App extends Component {
       <main className="App">
         {this.state.user ? (
           <Routes>
-            <Route path="/home" element={<HomePage />} />
+            <Route
+              path="/home"
+              element={<HomePage handleLogout={this.handleLogout} />}
+            />
             <Route
               path="/tickets"
               element={
@@ -51,13 +54,15 @@ export default class App extends Component {
                 />
               }
             />
-            {/* <Route
-              path="/tickets/:id"
-              element={<FormPage user={this.state.user} />}
-            /> */}
+
             <Route
               path="/new"
-              element={<FormPage reporter={this.state.user} />}
+              element={
+                <FormPage
+                  reporter={this.state.user}
+                  handleLogout={this.handleLogout}
+                />
+              }
             />
             <Route path="*" element={<Navigate to="/home" replace />} />
           </Routes>

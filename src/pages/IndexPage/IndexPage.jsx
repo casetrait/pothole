@@ -23,8 +23,9 @@ export default function IndexPage({user,handleLogout}) {
             headers:{
                 "Content-Type":"application/json",'Authorization': 'Bearer ' + jwt
             }
+            
         }   
-        ticketsAPI.deleteOne(ticketId,options).then(fetchTicketItems())
+        ticketsAPI.deleteOne(ticketId,options).then(()=>fetchTicketItems())
     }
     
     
