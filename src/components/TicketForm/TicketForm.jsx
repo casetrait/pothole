@@ -3,6 +3,12 @@ import Map from "../Map/Map";
 import { useState } from 'react' 
 import { useNavigate } from 'react-router-dom';
 import {getCurrentLatLng} from '../../utilities/Getloc'
+import TextField from '@mui/material/TextField';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel'
+import FormControl from '@mui/material/FormControl';
+import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
 import './TicketForm.css'
 
 export default function TicketForm({ticketItems,reporter}) {    
@@ -52,33 +58,34 @@ export default function TicketForm({ticketItems,reporter}) {
     
     return (
         <div className="all-form">
-            <div className="form">
-                
-            <form autoComplete="off" onSubmit={handleSubmit}>
-                <h2>Title:<input name='title' value={form.title} onChange={handleChange} required placeholder='TITLE REQUIRED'/></h2>
-                <h2>Category:
-                    <select name='category' value={form.category} onChange={handleChange}>
-                        <option value="Pothole">Pothole</option>
-                        <option value="Drainage">Drainage</option>
-                        <option value="Pedestrian">Pedestrian</option>
-                        <option value="Traffic Light">Traffic Light</option>
-                        <option value="Speed Limit">Speed Limit</option>
-                        <option value="Snow">Snow</option>
-                        <option value="Ice">Ice</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </h2>
-                <h2>Description:</h2>
-                <textarea name='description' value={form.description} onChange={handleChange} rows="4" cols="50" required placeholder='DESCRIPTION REQUIRED'></textarea>
-                
-                <button type='submit' >Submit</button>
-                </form>
-                
-            </div>
             <div className="form-map">
                 <Map setPosition = {setPosition} formCheck={formCheck} statePosition={statePosition} ticketItems={ticketItems}/>
-                <p><button onClick={handleUserLoc}>Use Current Location</button>Latitude: <input name='lat' value={statePosition[0]} onChange={handleChange}></input>
-                    Longitude<input name='lng' value={statePosition[1]} onChange={handleChange}></input></p>
+                <p className="form-black">
+                    Latitude: <input className="ll-input" name='lat' value={statePosition[0]} onChange={handleChange}></input>
+                    Longitude: <input className="ll-input" name='lng' value={statePosition[1]} onChange={handleChange}></input>
+                    <button className="form-button" onClick={handleUserLoc}>Use Current Location</button>
+                </p>
+            </div>
+            <div>
+                <h1 className="form-black">New Ticket Form</h1>
+                <form className="form" autoComplete="off" onSubmit={handleSubmit}>
+                    <FormControl variant="filled" fullWidth>
+                    <TextField variant="filled" label='Title' name='title' value={form.title} onChange={handleChange} required/>
+                        <Select id="cat-sel" label="Category" name='category' value={form.category} onChange={handleChange}>
+                            <MenuItem value="Pothole">Pothole</MenuItem>
+                            <MenuItem value="Drainage">Drainage</MenuItem>
+                            <MenuItem value="Pedestrian">Pedestrian</MenuItem>
+                            <MenuItem value="Traffic Light">Traffic Light</MenuItem>
+                            <MenuItem value="Speed Limit">Speed Limit</MenuItem>
+                            <MenuItem value="Snow">Snow</MenuItem>
+                            <MenuItem value="Ice">Ice</MenuItem>
+                            <MenuItem value="Other">Other</MenuItem>
+                        </Select>
+                    <TextField variant="filled" multiline rows={5} label='Description' name='description' value={form.description} onChange={handleChange} required placeholder='Description'></TextField>
+                    </FormControl>
+                    <p className="form-black">Select Location on Map Prior to Submitting</p>
+                    <button className="form-button" variant="contained" type='submit'>Submit</button>
+                </form>
             </div>
         </div>
     );

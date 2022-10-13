@@ -28,7 +28,7 @@
     border-radius: 0 0 10px 10px;
     border-top: none;
     display: grid;
-    grid-template-columns: 40% 15% 22% 23%;
+    grid-template-columns: 40% 15% 45%;
     padding: 10px 25px;
     background-color: #cac4c4;
     color: black;
@@ -58,4 +58,9 @@
 .all-tickets {
     width: 90%;
     margin: 0 auto;
+}
+
+.votes {
+    display: flex;
+    justify-content: space-around;
 }
