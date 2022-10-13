@@ -30,8 +30,8 @@ export default function TicketForm({ticketItems,reporter}) {
         )
     }
     
-    let handleSubmit = async ()=>{
-        
+    let handleSubmit = async (e)=>{
+        e.preventDefault();
         let body = {...form,lat:statePosition[0],long:statePosition[1]}
         let jwt = localStorage.getItem('token')
         let options = {
@@ -53,8 +53,9 @@ export default function TicketForm({ticketItems,reporter}) {
     return (
         <div className="all-form">
             <div className="form">
-                <h1>Ticket Form</h1>
-                <h2>Title:<input name='title' value={form.title} onChange={handleChange} required/></h2>
+                
+            <form autoComplete="off" onSubmit={handleSubmit}>
+                <h2>Title:<input name='title' value={form.title} onChange={handleChange} required placeholder='TITLE REQUIRED'/></h2>
                 <h2>Category:
                     <select name='category' value={form.category} onChange={handleChange}>
                         <option value="Pothole">Pothole</option>
@@ -68,8 +69,11 @@ export default function TicketForm({ticketItems,reporter}) {
                     </select>
                 </h2>
                 <h2>Description:</h2>
-                <textarea name='description' value={form.description} onChange={handleChange} rows="4" cols="50" required></textarea>
-                <button onClick={handleSubmit} >Submit</button>
+                <textarea name='description' value={form.description} onChange={handleChange} rows="4" cols="50" required placeholder='DESCRIPTION REQUIRED'></textarea>
+                
+                <button type='submit' >Submit</button>
+                </form>
+                
             </div>
             <div className="form-map">
                 <Map setPosition = {setPosition} formCheck={formCheck} statePosition={statePosition} ticketItems={ticketItems}/>
