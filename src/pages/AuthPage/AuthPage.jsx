@@ -29,7 +29,7 @@ export default class AuthPage extends Component {
             <button>{this.state.showLogin ? " OR SIGN UP " : " OR LOG IN"}</button>
           </h3>
         </div>
-        </div>
+       
       </main>
     )
   }

@@ -7,7 +7,8 @@ import './TicketForm.css'
 
 export default function TicketForm({ticketItems,reporter}) {    
     const navigate = useNavigate()
-    const [statePosition,setPosition]=useState([49.895077,-97.138451])        
+    // const [statePosition,setPosition]=useState([49.895077,-97.138451])  //Winnipeg      
+    const [statePosition,setPosition]=useState([43.651070,-79.347015])  //Toronto    
     const[form,setForm]=useState({reporter: reporter, title: '',category:'Pothole',description:'',lat:'',long:''})
     const title=form.title
     const category=form.category
