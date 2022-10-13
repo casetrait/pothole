@@ -1,4 +1,4 @@
-const { createIndexes } = require("../../models/ticket");
+// const { createIndexes } = require("../../models/ticket");
 const Ticket = require("../../models/ticket");
 
 module.exports = {
@@ -8,6 +8,7 @@ module.exports = {
   yourtickets,
   category,
   mostconfirmed,
+  mostresolved,
   markerSearch,
 };
 
@@ -22,7 +23,13 @@ async function create(req, res) {
 
 async function index(req, res) {
   try {
-    let tickets = await Ticket.find({}).sort({ createdAt: "desc" });
+    let tickets = await Ticket.find({
+      isActive: true,
+      resolvedCount: { $lte: 5 },
+    }).sort({
+      createdAt: "desc",
+      // isActive: true,
+    });
     res.status(200).json(tickets);
   } catch (err) {
     res.status(500).json(err);
@@ -40,7 +47,11 @@ async function deleteTicket(req, res) {
 
 async function yourtickets(req, res) {
   try {
-    let tickets = await Ticket.find({ reporter: req.params.userid });
+    let tickets = await Ticket.find({
+      reporter: req.params.userid,
+      isActive: true,
+      resolvedCount: { $lte: 5 },
+    });
 
     res.status(200).json(tickets);
   } catch (err) {
@@ -50,7 +61,11 @@ async function yourtickets(req, res) {
 
 async function category(req, res) {
   try {
-    let tickets = await Ticket.find({ category: req.params.category });
+    let tickets = await Ticket.find({
+      category: req.params.category,
+      isActive: true,
+      resolvedCount: { $lte: 5 },
+    });
 
     res.status(200).json(tickets);
   } catch (err) {
@@ -59,7 +74,27 @@ async function category(req, res) {
 }
 async function mostconfirmed(req, res) {
   try {
-    let tickets = await Ticket.find({}).sort({ confirmationCount: "desc" });
+    let tickets = await Ticket.find({
+      isActive: true,
+      resolvedCount: { $lte: 5 },
+    }).sort({
+      confirmationCount: "desc",
+    });
+
+    res.status(200).json(tickets);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
+
+async function mostresolved(req, res) {
+  try {
+    let tickets = await Ticket.find({
+      isActive: true,
+      resolvedCount: { $lte: 5 },
+    }).sort({
+      resolvedCount: "desc",
+    });
 
     res.status(200).json(tickets);
   } catch (err) {
@@ -69,9 +104,7 @@ async function mostconfirmed(req, res) {
 
 async function markerSearch(req, res) {
   try {
-    console.log(req.params.ticketid);
     let ticket = await Ticket.findById(req.params.ticketid);
-    console.log(ticket);
     res.status(200).json(ticket);
   } catch (err) {
     res.status(500).json(err);

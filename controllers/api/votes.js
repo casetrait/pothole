@@ -38,8 +38,8 @@ async function addResVote(req, res) {
   try {
     let ticket = await Ticket.findById(req.params.id);
     ticket.resolvedVote.push(req.body.user._id);
+    ticket.resolvedCount = ticket.resolvedVote.length;
     ticket.save();
-    console.log(ticket);
     res.status(200).json(ticket);
   } catch (err) {
     res.status(500).json(err);
@@ -49,13 +49,13 @@ async function addResVote(req, res) {
 async function removeResVote(req, res) {
   try {
     let ticket = await Ticket.findById(req.params.id);
-    res.status(200).json(ticket);
     const index = ticket.resolvedVote.indexOf(req.body.user._id);
     if (index > -1) {
       ticket.resolvedVote.splice(index, 1);
     }
+    ticket.resolvedCount = ticket.resolvedVote.length;
     ticket.save();
-    console.log(ticket);
+    res.status(200).json(ticket);
   } catch (err) {
     res.status(500).json(err);
   }

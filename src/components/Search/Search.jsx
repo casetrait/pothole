@@ -2,7 +2,7 @@
 import './Search.css'
 
 export default function Search(
-    {fetchTicketItems,handleYourTickets,user,handleChangeCategory,handleMostConfirmed}
+    {fetchTicketItems,handleYourTickets,user,handleChangeCategory,handleMostConfirmed,handleMostResolved}
     ) {
     return (
         <div className="filter-list">
