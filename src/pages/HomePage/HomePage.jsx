@@ -8,12 +8,12 @@ export default function HomePage() {
             <h1>About Route Ticket</h1>
             <p className="home-text">
                 Route Ticket was developed to connect infrustructure planners with their citizens to 
-                provide improved and inexpensive data for roadway and infrastructure planning. 
+                provide improved and inexpensive data for roadway and infrastructure maintenance and planning. 
             </p>
             <p className="home-text">
                 Users can create an account and report issues along their route by opening 
                 a "Route Ticket". Whether it be potholes, snow obstructions, poor signage or other concerns,
-                Users can report a unique issue by selection "Open a Ticket" and providing details including 
+                Users can report a unique issue by selecting "New Ticket" and providing details including 
                 map position and an optional image.
             </p>
             <p className="home-text">
