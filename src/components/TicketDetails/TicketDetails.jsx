@@ -7,6 +7,7 @@ export default function TicketDetails({ticket, checkUserVotes, conChecked, handl
     },[]
     ) 
     
+    
     return (
         <div className="ticket-details">
             <p>Description: {ticket.description}</p>
