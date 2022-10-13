@@ -3,6 +3,7 @@ import "./AuthPage.css"
 import Logo from "../../components/Logo/Logo"
 import LoginForm from "../../components/LoginForm/LoginForm"
 import SignUpForm from "../../components/SignUpForm/SignUpForm"
+import login from '../../static/images/Login.png'
 
 
 
@@ -17,7 +18,7 @@ export default class AuthPage extends Component {
         <div className="logsign">
           <div className="log-img">
             <Logo/>
-            <img src='/images/login.png' width='200px' alt ='Login'/>
+            <img src={login} width='200px' alt ='Login'/>
           </div>
           {this.state.showLogin ? (<h1>LOGIN
             <LoginForm setUserInState={this.props.setUserInState} /></h1>
