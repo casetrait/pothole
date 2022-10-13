@@ -41,38 +41,18 @@ export default class App extends Component {
       <main className="App">
         {this.state.user ? (
           <Routes>
-            <Route
-              path="/home"
-              element={<HomePage handleLogout={this.handleLogout} />}
-            />
-            <Route
-              path="/tickets"
-              element={
-                <IndexPage
-                  user={this.state.user}
-                  handleLogout={this.handleLogout}
-                />
-              }
-            />
-            <Route
-              path="/new"
-              element={
-                <FormPage
-                  reporter={this.state.user}
-                  handleLogout={this.handleLogout}
-                />
-              }
-            />
-            <Route path="*" element={<Navigate to="/home" replace />} />
+            <Route path="/home" element={<HomePage handleLogout={this.handleLogout} />}/>
+            <Route path="/tickets" element={<IndexPage user={this.state.user} handleLogout={this.handleLogout}/>}/>
+            <Route path="/new" element={ <FormPage reporter={this.state.user} handleLogout={this.handleLogout}/>}/>
+            <Route path="/*" element={<Navigate to="/home" replace />} />
           </Routes>
         ) : (
           <Routes>
-            <Route
-              path="/login"
-              element={<AuthPage setUserInState={this.setUserInState} />}
-            />
+            <Route path="/login" element={<AuthPage setUserInState={this.setUserInState} />}/>
             <Route path="/home" element={<HomePage />} />
-            <Route path="*" element={<Navigate to="/home" replace />} />
+            <Route path="/tickets" element={<HomePage />} />
+            <Route path="/new" element={<HomePage />} />
+            {/* <Route path="/*" element={<Navigate to="/home" replace />} /> */}
           </Routes>
         )}
       </main>
