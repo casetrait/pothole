@@ -21,3 +21,9 @@ export function getbyCategory(category) {
 export function mostConfirmed() {
   return fetch(`/api/tickets/filters/mostconfirmed/`).then((res) => res.json());
 }
+
+export function markerSearch(ticketid) {
+  return fetch(`/api/tickets/filters/markerSearch/${ticketid}`).then((res) =>
+    res.json()
+  );
+}

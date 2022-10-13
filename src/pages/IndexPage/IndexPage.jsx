@@ -8,9 +8,10 @@ import TicketList from '../../components/TicketList/TicketList'
 
 
 export default function IndexPage({user,handleLogout}) {
+
+
     const [statePosition,setPosition]=useState([49.895077,-97.138451])
     const [ticketItems, setTicketItems]=useState([]);
-    
     
     
     //delete post CRUD function
@@ -40,7 +41,6 @@ export default function IndexPage({user,handleLogout}) {
 
     }
     let handleYourTickets= async (userid)=>{
-        
         const yourTickets = await ticketsAPI.getYourTickets(userid)
         setTicketItems(yourTickets)
     }
@@ -49,8 +49,18 @@ export default function IndexPage({user,handleLogout}) {
     setTicketItems(mostConfirmed)
 
    }
+   let handleMarkerClickSearch = async (ticketid,lat,long) =>{
+    setPosition([lat,long])
+    const markerClickSearch = await ticketsAPI.markerSearch(ticketid)
+    setTicketItems([markerClickSearch])
+   }
 
+   //misc
+//    function getLatLong(latLong){setPosition(latLong)}
+
+   
     useEffect( ()=> {
+        
         fetchTicketItems()
     },[]
     )
@@ -67,24 +77,33 @@ export default function IndexPage({user,handleLogout}) {
                         handleMostConfirmed={handleMostConfirmed}
                         user={user}
                     />
-                    <Map className="index-map" setPosition = {setPosition} statePosition={statePosition} ticketItems={ticketItems}/>
-                    <div>
-                        <h2 id="stat-head">Statistics:</h2>
-                        <div className="stats">
-                            <h4>User Leaderboard:</h4>
-                            <p>Coming Soon</p>
-                            <h4>Top Cities:</h4>
-                            <p>Coming Soon</p>
-                            <h4>Worst Cities:</h4>
-                            <p>Coming Soon</p>
-                        </div>
+                <Map className="index-map" setPosition = {setPosition}
+                    statePosition={statePosition}
+                    ticketItems={ticketItems}
+                    handleMarkerClickSearch={handleMarkerClickSearch}
+                />
+                <div>
+                    <h2 id="stat-head">Statistics:</h2>
+                    <div className="stats">
+                        <h4>User Leaderboard:</h4>
+                        <p>Coming Soon</p>
+                        <h4>Top Cities:</h4>
+                        <p>Coming Soon</p>
+                        <h4>Worst Cities:</h4>
+                        <p>Coming Soon</p>
                     </div>
+                </div>
+
                 </div>
                 <TicketList 
                     ticketItems={ticketItems} 
                     user={user} 
                     handleOnClickDelete={handleOnClickDelete}
                     fetchTicketItems={fetchTicketItems}
+                    setPosition = {setPosition}
+                                 
+                    
+                    
                 />
         </main>
     )

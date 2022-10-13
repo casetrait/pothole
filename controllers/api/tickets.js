@@ -8,6 +8,7 @@ module.exports = {
   yourtickets,
   category,
   mostconfirmed,
+  markerSearch,
 };
 
 async function create(req, res) {
@@ -61,6 +62,17 @@ async function mostconfirmed(req, res) {
     let tickets = await Ticket.find({}).sort({ confirmationCount: "desc" });
 
     res.status(200).json(tickets);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
+
+async function markerSearch(req, res) {
+  try {
+    console.log(req.params.ticketid);
+    let ticket = await Ticket.findById(req.params.ticketid);
+    console.log(ticket);
+    res.status(200).json(ticket);
   } catch (err) {
     res.status(500).json(err);
   }

@@ -1,7 +1,7 @@
 import TicketItems from "../TicketItems/TicketItems";
 import "./TicketList.css"
 
-export default function TicketList({ticketItems,user,handleOnClickDelete,fetchTicketItems}) {
+export default function TicketList({ticketItems,user,handleOnClickDelete,fetchTicketItems,setPosition}) {
     
     return (
         <div className = 'ticketcontainer'>
@@ -12,15 +12,16 @@ export default function TicketList({ticketItems,user,handleOnClickDelete,fetchTi
                     <h3 className="vote">Resolved Votes:</h3>
                     <h3></h3>
                 </div>
-                {ticketItems.map(ticket => 
-                    <TicketItems 
-                        key = {ticket._id} 
-                        ticket = {ticket} 
-                        user= {user} 
-                        handleOnClickDelete={handleOnClickDelete}
-                        fetchTicketItems={fetchTicketItems}
-                    /> 
-                )}
+            {ticketItems.map(ticket => 
+                <TicketItems 
+                    key = {ticket._id} 
+                    ticket = {ticket} 
+                    user= {user} 
+                    handleOnClickDelete={handleOnClickDelete}
+                    fetchTicketItems={fetchTicketItems}
+                    setPosition = {setPosition}
+                /> 
+            )}
         </div>
     )
     

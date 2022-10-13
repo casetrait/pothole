@@ -4,15 +4,20 @@ import TicketHeader from "../TicketHeader/TicketHeader";
 import TicketDetails from "../TicketDetails/TicketDetails";
 import '../TicketList/TicketList.css'
 
-export default function TicketItems({ticket, user, handleOnClickDelete, fetchTicketItems}) {
+export default function TicketItems({ticket, user, handleOnClickDelete, fetchTicketItems,setPosition}) {
 
     const[show, setShow] = useState(false)
-    const handleDetail = () => { setShow(current => !current) }
     const[conChecked, setConChecked] = useState(false)
     const[resChecked, setResChecked] = useState(false)
     const[conVote, setConVote]=useState()
     const[resVote, setResVote]=useState()
-
+    
+    
+    
+    const handleDetail = () => { setShow(current => !current)
+     
+            }
+    
     let tallyVotes = async ()=> {
         const conVotes = ticket.confirmationVote.length
         const resVotes = ticket.resolvedVote.length
@@ -21,10 +26,8 @@ export default function TicketItems({ticket, user, handleOnClickDelete, fetchTic
     }
     const handleConChange = async () => { 
         setConChecked((prevCon)=>!prevCon)
-        await tallyVotes()
-        let ticketAddCount= {...ticket,confirmationCount:conVote}
-        console.log(ticketAddCount.confirmationCount, '<-frontend')
-        let body={ticketAddCount,user}
+        
+        let body={ticket,user}
         let jwt = localStorage.getItem('token')
         let options = {
             method:"PUT",
@@ -41,7 +44,7 @@ export default function TicketItems({ticket, user, handleOnClickDelete, fetchTic
 
     const handleResChange =  () => {
         setResChecked(!resChecked) 
-        tallyVotes()
+        
         let body={ticket, user}
         let jwt = localStorage.getItem('token')
         let options = {
@@ -76,7 +79,7 @@ export default function TicketItems({ticket, user, handleOnClickDelete, fetchTic
     return (
         <div className="">
             <button onClick={handleDetail} className="header-button">
-                <TicketHeader                 
+                <TicketHeader                
                     ticket={ticket}
                     user={user}
                     key = {ticket._id} 
@@ -84,9 +87,11 @@ export default function TicketItems({ticket, user, handleOnClickDelete, fetchTic
                     conVote={conVote}
                     resVote={resVote}
                     tallyVotes={tallyVotes}
+                    
                 />
+                    <p onClick={()=>{return setPosition([ticket.lat,ticket.long])}}> Locate</p>
             </button>
-            { show && <TicketDetails 
+            { show && <TicketDetails             
                 ticket={ticket}
                 user={user}
                 key={ticket._id} 
