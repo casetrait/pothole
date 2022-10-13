@@ -1,5 +1,5 @@
 import { Component } from "react";
-
+import "./LoginForm.css"
 export default class LoginForm extends Component {
   state = {
     email: "",
@@ -42,19 +42,19 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className='loginform'>
         <div className="" onSubmit={this.handleSubmit}>
           <form autoComplete="off">
-            <label>Email</label>
-            <input
+            <label>Email: </label>
+            <input calssName='input'
               type="text"
               name="email"
               value={this.state.email}
               onChange={this.handleChange}
               required
             /> <br/><br/>
-            <label>Password</label>
-            <input
+            <label>Password: </label>
+            <input calssName='input'
               type="password"
               name="password"
               value={this.state.password}
