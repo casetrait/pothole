@@ -7,6 +7,8 @@
 ---
 # Navigating the App
 
+![Form Page](/public/images/login.png)
+
 Users can create an account and report issues along their route by opening a new "Route Ticket". Whether it be potholes, snow obstructions, poor signage or other concerns, Users can report a unique issue by selecting "New Ticket" and providing details including map position.
 
 ![Form Page](/public/images/form.png)

@@ -21,7 +21,7 @@ export default function FormPage({reporter,handleLogout}) {
     )
     
         return(
-            <main className="">
+            <main className="form-page">
                     <NavBar handleLogout={handleLogout}/>
                     <TicketForm ticketItems={ticketItems} reporter={reporter} />
             </main>
