@@ -1,25 +1,14 @@
-nav {
+.menu-img:hover {
+    background-color: #646464;
+}
+
+.menu-img {
+    padding: 3px 3px 0 3px;
+}
+
+.nav-grid {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    border-bottom: white solid 3px;
     background-color: black;
-}
-
-.menu {
-    color: antiquewhite;
-    font-size: 30px;
-    text-decoration: none;
-    padding: 10px;
-}
-
-.menu:hover {
-    background-color: #646464;
-}
-
-.menu-logo:hover {
-    background-color: #646464;
-}
-
-.menu-logo {
-    padding: 3px 0 0 3px;
 }

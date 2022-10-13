@@ -22,8 +22,7 @@ export default  function Map({setPosition,statePosition,ticketItems,formCheck}) 
         />
        <MarkerClusterGroup>
         {ticketItems.map(ticket=>
-        <Marker key = {ticket._id} position={[ticket.lat, ticket.long]} icon = {iconSelect(ticket.category)
-}>
+        <Marker key = {ticket._id} position={[ticket.lat, ticket.long]} icon = {iconSelect(ticket.category)}>
           <Popup>
             <b>{ticket.category}</b> <br/>
             {ticket.title}

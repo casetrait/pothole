@@ -1,14 +1,26 @@
 .index-map-search {
-    display: flex;
-}
-
-.index-map {
-    width: 20%;
+    display: grid;
+    grid-template-columns: 180px auto 180px;
+    background-color: rgb(32, 32, 32);
+    border-bottom: 3px white solid;
+    padding: 12px 0;
 }
 
 .ticklist-header {
     text-align: left;
     padding: 20px;
-    background-color: Black;
+    background-color: rgb(32, 32, 32);
     margin: 0;
+}
+
+.stats {
+    border-radius: 18px;
+    border: 8px solid rgb(32, 32, 32);
+    background-color:#464545;
+    margin: 0 20px;
+    height: 300px;
+}
+
+#stat-head {
+    margin: 11px 0;
 }

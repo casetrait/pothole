@@ -21,7 +21,7 @@ export default function HomePage() {
                 cast a confirmation vote on the ticket to indicate extra urgency to resolve the issue.  Similarily, 
                 users can vote on tickets that are resolved to assist with a status and filtering algorithm. 
             </p>
-            <img className="home-logo" src='/images/CircleLogo.png' alt ='Logo'/>
+            <img className="home-logo" src='/images/Earth.gif' alt ='Logo'/>
             <h1>Development</h1>
             <p className="home-text">
                 Route Ticket is currently undergoing testing and further development to add additional functionality. 

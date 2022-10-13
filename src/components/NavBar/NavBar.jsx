@@ -6,11 +6,11 @@ import './NavBar.css'
 export default function NavBar({handleLogout}) {
     
     return (
-        <nav className="">
-            <Link to="/home" className="menu-logo"><Logo /></Link>
-            <Link to="/tickets" className="menu">All Tickets</Link>
-            <Link to="/new" className="menu">Open A Ticket</Link>
-            <Link className="menu" onClick={()=>handleLogout()}>Log Out</Link>
+        <nav className="nav-grid">
+            <Link to="/home" className="menu-img"><Logo /></Link>
+            <Link to="/tickets" className="menu-img" id="all"><img src='/images/all.png' width='200px' alt ='All Tickets'/></Link>
+            <Link to="/new" className="menu-img"><img src='/images/new.png' width='200px' alt ='New Ticket'/></Link>
+            <Link className="menu-img" onClick={()=>handleLogout()}><img src='/images/logout.png' width='200px' alt ='Logout'/></Link>
         </nav>
     );
 }
