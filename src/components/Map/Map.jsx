@@ -22,7 +22,7 @@ export default  function Map({setPosition,statePosition,ticketItems,formCheck,ha
     return (
         
     <MapContainer
-        center={[49.895077,-97.138451]}
+        center={statePosition}
         zoom={13}
         scrollWheelZoom={true}
         >

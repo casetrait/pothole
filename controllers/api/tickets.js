@@ -28,7 +28,6 @@ async function index(req, res) {
       resolvedCount: { $lte: 5 },
     }).sort({
       createdAt: "desc",
-      // isActive: true,
     });
     res.status(200).json(tickets);
   } catch (err) {
@@ -38,7 +37,13 @@ async function index(req, res) {
 
 async function deleteTicket(req, res) {
   try {
-    let ticket = await Ticket.findByIdAndDelete(req.params.id);
+    console.log(req.user._id, "<--user id");
+    let ticket = await Ticket.findById(req.params.id);
+
+    console.log(ticket.reporter, "<--reporter id");
+    if (req.user._id == ticket.reporter) {
+      ticket = await Ticket.findByIdAndDelete(req.params.id);
+    }
     res.status(200).json("Successfully deleted");
   } catch (err) {
     res.status(500).json(err);

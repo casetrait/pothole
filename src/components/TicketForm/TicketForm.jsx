@@ -3,20 +3,20 @@ import Map from "../Map/Map";
 import { useState } from 'react' 
 import { useNavigate } from 'react-router-dom';
 import {getCurrentLatLng} from '../../utilities/Getloc'
-import { useMap } from 'react-leaflet/hooks'
 import './TicketForm.css'
 
 export default function TicketForm({ticketItems,reporter}) {    
     const navigate = useNavigate()
-    const [statePosition,setPosition]=useState([49.895077,-97.138451])        
+    // const [statePosition,setPosition]=useState([49.895077,-97.138451])  //Winnipeg      
+    const [statePosition,setPosition]=useState([43.651070,-79.347015])  //Toronto    
     const[form,setForm]=useState({reporter: reporter, title: '',category:'Pothole',description:'',lat:'',long:''})
     const title=form.title
     const category=form.category
     const description = form.description
     const lat=statePosition[0]
     const long = statePosition[1]
-
-   
+    
+  
 
     let handleUserLoc = async () =>{
         let userlatlng= await getCurrentLatLng()
@@ -54,7 +54,7 @@ export default function TicketForm({ticketItems,reporter}) {
         <div className="all-form">
             <div className="form">
                 <h1>Ticket Form</h1>
-                <h2>Title:<input name='title' value={form.title} onChange={handleChange}></input></h2>
+                <h2>Title:<input name='title' value={form.title} onChange={handleChange} required/></h2>
                 <h2>Category:
                     <select name='category' value={form.category} onChange={handleChange}>
                         <option value="Pothole">Pothole</option>
@@ -68,8 +68,8 @@ export default function TicketForm({ticketItems,reporter}) {
                     </select>
                 </h2>
                 <h2>Description:</h2>
-                <textarea name='description' value={form.description} onChange={handleChange} rows="4" cols="50"></textarea>
-                <button onClick={handleSubmit}>Submit</button>
+                <textarea name='description' value={form.description} onChange={handleChange} rows="4" cols="50" required></textarea>
+                <button onClick={handleSubmit} >Submit</button>
             </div>
             <div className="form-map">
                 <Map setPosition = {setPosition} formCheck={formCheck} statePosition={statePosition} ticketItems={ticketItems}/>

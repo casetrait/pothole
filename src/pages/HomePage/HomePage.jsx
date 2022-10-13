@@ -1,10 +1,10 @@
 import './HomePage.css'
 import NavBar from '../../components/NavBar/NavBar'
 
-export default function HomePage() {
+export default function HomePage({handleLogout}) {
     return(
         <main className="">
-            <NavBar />
+            <NavBar handleLogout={handleLogout}/>
             <h1>About Route Ticket</h1>
             <p className="home-text">
                 Route Ticket was developed to connect infrustructure planners with their citizens to 

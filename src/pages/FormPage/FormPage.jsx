@@ -5,7 +5,7 @@ import TicketForm from '../../components/TicketForm/TicketForm'
 import * as ticketsAPI from '../../utilities/tickets-api';
 
 import React from 'react'
-export default function FormPage({reporter}) {
+export default function FormPage({reporter,handleLogout}) {
     
     const [ticketItems, setTicketItems]=useState([]);
     
@@ -22,7 +22,7 @@ export default function FormPage({reporter}) {
     
         return(
             <main className="">
-                    <NavBar />
+                    <NavBar handleLogout={handleLogout}/>
                     <TicketForm ticketItems={ticketItems} reporter={reporter} />
             </main>
         )
