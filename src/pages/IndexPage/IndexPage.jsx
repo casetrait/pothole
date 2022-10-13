@@ -66,28 +66,35 @@ export default function IndexPage({user,handleLogout}) {
     )
 
     
-   
-    
     return(
         <main className="">
                 <NavBar handleLogout = {handleLogout}/>
                 <div className="index-map-search">
-                <Search 
-                fetchTicketItems={fetchTicketItems}
-                handleYourTickets={handleYourTickets}
-                handleChangeCategory={handleChangeCategory}
-                handleMostConfirmed={handleMostConfirmed}
-                user={user}
-                />
+                    <Search 
+                        fetchTicketItems={fetchTicketItems}
+                        handleYourTickets={handleYourTickets}
+                        handleChangeCategory={handleChangeCategory}
+                        handleMostConfirmed={handleMostConfirmed}
+                        user={user}
+                    />
                 <Map className="index-map" setPosition = {setPosition}
-                 statePosition={statePosition}
-                  ticketItems={ticketItems}
-                  handleMarkerClickSearch={handleMarkerClickSearch}
-                  
-
-                  />
+                    statePosition={statePosition}
+                    ticketItems={ticketItems}
+                    handleMarkerClickSearch={handleMarkerClickSearch}
+                />
+                <div>
+                    <h2 id="stat-head">Statistics:</h2>
+                    <div className="stats">
+                        <h4>User Leaderboard:</h4>
+                        <p>Coming Soon</p>
+                        <h4>Top Cities:</h4>
+                        <p>Coming Soon</p>
+                        <h4>Worst Cities:</h4>
+                        <p>Coming Soon</p>
+                    </div>
                 </div>
-                <h1 className='ticklist-header'>Route Tickets:</h1>
+
+                </div>
                 <TicketList 
                     ticketItems={ticketItems} 
                     user={user} 
