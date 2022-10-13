@@ -2,7 +2,7 @@
 import './Search.css'
 
 export default function Search(
-    {fetchTicketItems,handleYourTickets,user,handleChangeCategory,handleMostConfirmed,handleMostResolved}
+    {fetchTicketItems,handleYourTickets,user,handleChangeCategory,handleMostConfirmed,handleMostResolved,handleShowResolved}
     ) {
     return (
         <div className="filter-list">
@@ -23,7 +23,8 @@ export default function Search(
             <button className='filter-button' onClick = {()=>fetchTicketItems()}>Most Recent</button>
             <button className='filter-button' onClick = {()=>handleYourTickets(user._id)}>Your Tickets</button>
             <button className='filter-button' onClick = {()=>handleMostConfirmed()}>Most Confirmed</button>
-            <button className='filter-button' onClick = {()=>handleMostConfirmed()}>Most Resolved</button>
+            <button className='filter-button' onClick = {()=>handleMostResolved()}>Most Resolved</button>
+            <button className='filter-button' onClick = {()=>handleShowResolved()}>Show Resolved</button>
             <button className='filter-button' onClick = {()=>fetchTicketItems()}>Reset</button>
         </div>
     );

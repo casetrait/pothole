@@ -39,6 +39,9 @@ async function addResVote(req, res) {
     let ticket = await Ticket.findById(req.params.id);
     ticket.resolvedVote.push(req.body.user._id);
     ticket.resolvedCount = ticket.resolvedVote.length;
+    if (ticket.resolvedCount >= 5) {
+      ticket.isActive = false;
+    }
     ticket.save();
     res.status(200).json(ticket);
   } catch (err) {
