@@ -11,7 +11,7 @@ export default class AuthPage extends Component {
 
   render() {
     return (
-      <main className="">
+      <main className="logsign">
         <div>
           <Logo />
           {this.state.showLogin ? (<h3>LOGIN
