@@ -35,7 +35,7 @@ export default function IndexPage({user,handleLogout}) {
     }
     
     let handleChangeCategory = async (e)=>{
-        if(e.target.value!="Select Category"){
+        if(e.target.value!=="Select Category"){
         const tickets = await ticketsAPI.getbyCategory(e.target.value)
         setTicketItems(tickets)}
 

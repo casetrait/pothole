@@ -28,7 +28,6 @@ async function index(req, res) {
       resolvedCount: { $lte: 5 },
     }).sort({
       createdAt: "desc",
-      // isActive: true,
     });
     res.status(200).json(tickets);
   } catch (err) {
