@@ -23,7 +23,10 @@ async function create(req, res) {
 
 async function index(req, res) {
   try {
-    let tickets = await Ticket.find({}).sort({
+    let tickets = await Ticket.find({
+      isActive: true,
+      resolvedCount: { $lte: 5 },
+    }).sort({
       createdAt: "desc",
       // isActive: true,
     });
@@ -46,7 +49,8 @@ async function yourtickets(req, res) {
   try {
     let tickets = await Ticket.find({
       reporter: req.params.userid,
-      // isActive: true,
+      isActive: true,
+      resolvedCount: { $lte: 5 },
     });
 
     res.status(200).json(tickets);
@@ -59,7 +63,8 @@ async function category(req, res) {
   try {
     let tickets = await Ticket.find({
       category: req.params.category,
-      // isActive: true,
+      isActive: true,
+      resolvedCount: { $lte: 5 },
     });
 
     res.status(200).json(tickets);
@@ -69,9 +74,11 @@ async function category(req, res) {
 }
 async function mostconfirmed(req, res) {
   try {
-    let tickets = await Ticket.find({}).sort({
+    let tickets = await Ticket.find({
+      isActive: true,
+      resolvedCount: { $lte: 5 },
+    }).sort({
       confirmationCount: "desc",
-      // isActive: true,
     });
 
     res.status(200).json(tickets);
@@ -82,9 +89,11 @@ async function mostconfirmed(req, res) {
 
 async function mostresolved(req, res) {
   try {
-    let tickets = await Ticket.find({}).sort({
+    let tickets = await Ticket.find({
+      isActive: true,
+      resolvedCount: { $lte: 5 },
+    }).sort({
       resolvedCount: "desc",
-      // isActive: true,
     });
 
     res.status(200).json(tickets);
@@ -95,9 +104,7 @@ async function mostresolved(req, res) {
 
 async function markerSearch(req, res) {
   try {
-    console.log(req.params.ticketid);
     let ticket = await Ticket.findById(req.params.ticketid);
-    console.log(ticket);
     res.status(200).json(ticket);
   } catch (err) {
     res.status(500).json(err);
