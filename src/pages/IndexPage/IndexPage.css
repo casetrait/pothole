@@ -13,7 +13,7 @@
 
 .stats {
     border-radius: 10px;
-    background-color:#464545;
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
     margin: 0 20px;
     height: 300px;
     padding: 5px 0;

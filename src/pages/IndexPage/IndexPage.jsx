@@ -23,8 +23,7 @@ export default function IndexPage({user,handleLogout}) {
             headers:{
                 "Content-Type":"application/json",'Authorization': 'Bearer ' + jwt
             }
-        }
-        
+        }   
         ticketsAPI.deleteOne(ticketId,options).then(fetchTicketItems())
     }
     
@@ -81,23 +80,22 @@ export default function IndexPage({user,handleLogout}) {
                         handleMostResolved={handleMostResolved}
                         user={user}
                     />
-                <Map className="index-map" setPosition = {setPosition}
-                    statePosition={statePosition}
-                    ticketItems={ticketItems}
-                    handleMarkerClickSearch={handleMarkerClickSearch}
-                />
-                <div>
-                    <h2 id="stat-head">Statistics:</h2>
-                    <div className="stats">
-                        <h4>User Leaderboard:</h4>
-                        <p>Coming Soon</p>
-                        <h4>Top Cities:</h4>
-                        <p>Coming Soon</p>
-                        <h4>Worst Cities:</h4>
-                        <p>Coming Soon</p>
+                    <Map className="index-map" setPosition = {setPosition}
+                        statePosition={statePosition}
+                        ticketItems={ticketItems}
+                        handleMarkerClickSearch={handleMarkerClickSearch}
+                    />
+                    <div>
+                        <h2 id="stat-head">Statistics:</h2>
+                        <div className="stats">
+                            <h4>User Leaderboard:</h4>
+                            <p>Coming Soon</p>
+                            <h4>Top Cities:</h4>
+                            <p>Coming Soon</p>
+                            <h4>Worst Cities:</h4>
+                            <p>Coming Soon</p>
+                        </div>
                     </div>
-                </div>
-
                 </div>
                 <OverflowScrolling className='overflow-scrolling'>
                     <TicketList id="list"

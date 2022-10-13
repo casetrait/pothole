@@ -39,7 +39,12 @@
 }
 
 #list-header{
-    align-items:flex-end;
+    display: grid;
+    grid-template-columns: 40% 15% 20% 20% 5% ;
+    padding: 0 0 0 20px;
+    text-align:left;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .vote {
@@ -51,6 +56,6 @@
 }
 
 .all-tickets {
-    width: 95%;
+    width: 90%;
     margin: 0 auto;
 }
