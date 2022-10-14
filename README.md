@@ -35,7 +35,8 @@ If the issue of concern already has an active ticket it will appear on the map. 
 # Getting Started
 
 [Click Here to Launch the App!](https://route-ticket.herokuapp.com/home)
-- Please report any bugs or send your thoughts and suggestions to our e-mails: casetrait@gmail.com + randolphcrasto1@gmail.com
+- Please report any bugs or send your thoughts and suggestions to our team: awake ? code: caffinate 
+- e-mails: casetrait@gmail.com + randolphcrasto1@gmail.com
 
 ---
 # Next Steps
