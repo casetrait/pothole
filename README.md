@@ -1,4 +1,4 @@
-![Route Ticket Logo](/public/images/logo.png)
+![Route Ticket Logo](/public/images/Logo.png)
 
 ---
 # Overview
